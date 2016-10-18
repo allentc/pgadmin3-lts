@@ -2,7 +2,8 @@
 //
 // pgAdmin III - PostgreSQL Tools
 //
-// Copyright (C) 2002 - 2016, The pgAdmin Development Team
+// Copyright (C) 2016, BigSQL
+// Portions Copyright (C) 2002 - 2016, The pgAdmin Development Team
 // This software is released under the PostgreSQL Licence
 //
 // sysSettings.h - Settings handling class
@@ -686,7 +687,7 @@ public:
 	bool GetSuppressGuruHints() const
 	{
 		bool b;
-		Read(wxT("SuppressGuruHints"), &b, false);
+		Read(wxT("SuppressGuruHints"), &b, true);
 		return b;
 	}
 	void SetSuppressGuruHints(const bool newval)

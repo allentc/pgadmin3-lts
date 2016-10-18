@@ -2,7 +2,8 @@
 //
 // pgAdmin III - PostgreSQL Tools
 //
-// Copyright (C) 2002 - 2016, The pgAdmin Development Team
+// Copyright (C) 2016, BigSQL
+// Portions Copyright (C) 2002 - 2016, The pgAdmin Development Team
 // This software is released under the PostgreSQL Licence
 //
 // frmAbout.cpp - About Box
@@ -82,9 +83,11 @@ void frmAbout::OnPaint(wxPaintEvent &WXUNUSED(event))
 		dc.DrawText(_("This program is based on pgAdmin III"), pos);
 		pos.y += appearanceFactory->GetSplashTextOffset();
 	}
-	dc.DrawText(VERSION_WITH_DATE_AND_SVN, pos);
+	dc.DrawText(VERSION_WITH_DATE, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
-	dc.DrawText(COPYRIGHT, pos);
+	dc.DrawText(COPYRIGHT_BIGSQL, pos);
+	pos.y += appearanceFactory->GetSplashTextOffset();
+	dc.DrawText(COPYRIGHT_PGADMIN, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
 	dc.DrawText(LICENSE, pos);
 }

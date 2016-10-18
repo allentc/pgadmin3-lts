@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'pgAdmin III'
+project = u'pgAdmin3 LTS'
 copyright = u'2002 - 2016, The pgAdmin Development Team'
 
 # The version info for the project you're documenting, acts as replacement for

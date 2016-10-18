@@ -2,7 +2,8 @@
 //
 // pgAdmin III - PostgreSQL Tools
 //
-// Copyright (C) 2002 - 2016, The pgAdmin Development Team
+// Copyright (C) 2016, BigSQL
+// Portions Copyright (C) 2002 - 2016, The pgAdmin Development Team
 // This software is released under the PostgreSQL Licence
 //
 // frmOptions.cpp - The main options dialogue
@@ -489,7 +490,7 @@ void frmOptions::OnDefault(wxCommandEvent &ev)
 
 void frmOptions::OnSuppressHints(wxCommandEvent &ev)
 {
-	if (chkSuppressHints->GetValue())
+	if (chkSuppressHints->GetValue() == false)
 		chkResetHints->SetValue(false);
 }
 
@@ -497,7 +498,7 @@ void frmOptions::OnSuppressHints(wxCommandEvent &ev)
 void frmOptions::OnResetHints(wxCommandEvent &ev)
 {
 	if (chkResetHints->GetValue())
-		chkSuppressHints->SetValue(false);
+		chkSuppressHints->SetValue(true);
 }
 
 void frmOptions::UpdateColourControls()

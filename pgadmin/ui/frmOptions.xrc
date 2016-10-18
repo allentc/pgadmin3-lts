@@ -1227,6 +1227,7 @@
                 <object class="sizeritem">
                   <object class="wxCheckBox" name="chkSuppressHints">
                     <label>Do not show guru hints; I'm one myself</label>
+                    <checked>1</checked>
                   </object>
                   <flag>wxEXPAND|wxALIGN_CENTER_VERTICAL|wxTOP|wxLEFT|wxRIGHT</flag>
                   <border>4</border>
@@ -1234,6 +1235,7 @@
                 <object class="sizeritem">
                   <object class="wxCheckBox" name="chkResetHints">
                     <label>Reset guru hints</label>
+                    <checked>1</checked>
                   </object>
                   <flag>wxEXPAND|wxALIGN_CENTER_VERTICAL|wxTOP|wxLEFT|wxRIGHT</flag>
                   <border>4</border>

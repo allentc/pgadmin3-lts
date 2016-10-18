@@ -1,4 +1,4 @@
-pgAdmin III
+pgAdmin3
 ===========
 
 Contents:

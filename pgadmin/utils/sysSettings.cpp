@@ -2,7 +2,8 @@
 //
 // pgAdmin III - PostgreSQL Tools
 //
-// Copyright (C) 2002 - 2016, The pgAdmin Development Team
+// Copyright (C) 2016, BigSQL
+// Portions Copyright (C) 2002 - 2016, The pgAdmin Development Team
 // This software is released under the PostgreSQL Licence
 //
 // sysSettings.cpp - Settings handling class
@@ -91,6 +92,11 @@ bool sysSettings::GetDisplayOption(const wxString &objtype, bool GetDefault)
 		engtype = wxT("Resource Groups");
 	else if (objtype == _("Catalogs"))
 		engtype = wxT("Catalogs");
+	else if (objtype == _("Collations"))
+	{
+		engtype = wxT("Collations");
+		def = false;
+	}
 	else if (objtype == _("Casts"))
 	{
 		engtype = wxT("Casts");
@@ -99,12 +105,10 @@ bool sysSettings::GetDisplayOption(const wxString &objtype, bool GetDefault)
 	else if (objtype == _("Foreign Data Wrappers"))
 	{
 		engtype = wxT("Foreign Data Wrappers");
-		def = false;
 	}
 	else if (objtype == _("Foreign Servers"))
 	{
 		engtype = wxT("Foreign Servers");
-		def = false;
 	}
 	else if (objtype == _("User Mappings"))
 	{
@@ -140,7 +144,10 @@ bool sysSettings::GetDisplayOption(const wxString &objtype, bool GetDefault)
 		def = false;
 	}
 	else if (objtype == _("Domains"))
+	{
 		engtype = wxT("Domains");
+		def = false;
+	}
 	else if (objtype == _("Functions"))
 		engtype = wxT("Functions");
 	else if (objtype == _("Trigger Functions"))
@@ -169,13 +176,25 @@ bool sysSettings::GetDisplayOption(const wxString &objtype, bool GetDefault)
 	else if (objtype == _("Tables"))
 		engtype = wxT("Tables");
 	else if (objtype == _("FTS Configurations"))
+	{
 		engtype = wxT("FTS Configurations");
+		def = false;
+	}
 	else if (objtype == _("FTS Dictionaries"))
+	{
 		engtype = wxT("FTS Dictionaries");
+		def = false;
+	}
 	else if (objtype == _("FTS Parsers"))
+	{
 		engtype = wxT("FTS Parsers");
+		def = false;
+	}
 	else if (objtype == _("FTS Templates"))
+	{
 		engtype = wxT("FTS Templates");
+		def = false;
+	}
 	else if (objtype == _("Types"))
 	{
 		engtype = wxT("Types");
@@ -186,7 +205,10 @@ bool sysSettings::GetDisplayOption(const wxString &objtype, bool GetDefault)
 	else if (objtype == _("External Tables"))
 		engtype = wxT("External Tables");
 	else if (objtype == _("Event Triggers"))
+	{
 		engtype = wxT("Event Triggers");
+		def = false;
+	}
 
 	// If we just want the default, return it.
 	if (GetDefault)

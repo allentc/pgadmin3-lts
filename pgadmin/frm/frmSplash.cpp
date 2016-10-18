@@ -2,7 +2,8 @@
 //
 // pgAdmin III - PostgreSQL Tools
 //
-// Copyright (C) 2002 - 2016, The pgAdmin Development Team
+// Copyright (C) 2016, BigSQL
+// Portions Copyright (C) 2002 - 2016, The pgAdmin Development Team
 // This software is released under the PostgreSQL Licence
 //
 // frmSplash.cpp - Splash Screen
@@ -72,7 +73,9 @@ void frmSplash::OnPaint(wxPaintEvent &WXUNUSED(event))
 	}
 	dc.DrawText(VERSION_WITHOUT_DATE, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
-	dc.DrawText(COPYRIGHT, pos);
+	dc.DrawText(COPYRIGHT_BIGSQL, pos);
+	pos.y += appearanceFactory->GetSplashTextOffset();
+	dc.DrawText(COPYRIGHT_PGADMIN, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
 	dc.DrawText(LICENSE, pos);
 }
