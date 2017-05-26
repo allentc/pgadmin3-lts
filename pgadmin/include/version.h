@@ -2,8 +2,8 @@
 //
 // pgAdmin III - PostgreSQL Tools
 //
-// Copyright (C) 2017, BigSQL
-// Portions Copyright (C) 2002 - 2017, The pgAdmin Development Team
+// Copyright (C) 2016 - 2017, OpenSCG
+// Portions Copyright (C) 2002 - 2016, The pgAdmin Development Team
 // This software is released under the PostgreSQL Licence
 //
 // version.h - pgAdmin version info
