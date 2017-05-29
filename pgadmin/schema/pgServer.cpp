@@ -874,15 +874,14 @@ int pgServer::Connect(frmMain *form, bool askPassword, const wxString &pwd, bool
 		}
 		else
 		{
-                  if (conn->GetMajorVersion() != SERVER_PG10_VERSION_N && (!(conn->BackendMinimumVersion(SERVER_MIN_VERSION_N >> 8, SERVER_MIN_VERSION_N & 0x00FF)) ||
-                       (conn->BackendMinimumVersion(SERVER_MAX_VERSION_N >> 8, (SERVER_MAX_VERSION_N & 0x00FF) + 1))))
+                  if (!(conn->BackendMinimumVersion(SERVER_MIN_VERSION_N >> 8, SERVER_MIN_VERSION_N & 0x00FF)) ||
+                       (conn->BackendMinimumVersion(SERVER_MAX_VERSION_N >> 8, (SERVER_MAX_VERSION_N & 0x00FF) + 1)))
 			{
-				wxLogWarning(_("The server you are connecting to is not a version that is supported by this release of %s.\n\n%s may not function as expected.\n\nSupported server versions are %s to %s and %s."),
+				wxLogWarning(_("The server you are connecting to is not a version that is supported by this release of %s.\n\n%s may not function as expected.\n\nSupported server versions are %s to %s."),
 				             appearanceFactory->GetLongAppName().c_str(),
 				             appearanceFactory->GetLongAppName().c_str(),
 				             wxString(SERVER_MIN_VERSION_T).c_str(),
-				             wxString(SERVER_MAX_VERSION_T).c_str(),
-				             wxString(SERVER_PG10_VERSION_T).c_str());
+				             wxString(SERVER_MAX_VERSION_T).c_str());
 			}
 		}
 
@@ -907,7 +906,7 @@ int pgServer::Connect(frmMain *form, bool askPassword, const wxString &pwd, bool
 		if (conn->BackendMinimumVersion(8, 5))
 		{
 			sql += wxT(", CASE WHEN usesuper THEN pg_is_in_recovery() ELSE NULL END as inrecovery");
-			if (conn->GetMajorVersion() == SERVER_PG10_VERSION_N)
+			if (conn->BackendMinimumVersion(10, 0))
 			{
 				sql += wxT(", CASE WHEN usesuper THEN pg_last_wal_receive_lsn() ELSE NULL END as receiveloc");
 				sql += wxT(", CASE WHEN usesuper THEN pg_last_wal_replay_lsn() ELSE NULL END as replayloc");
@@ -921,7 +920,7 @@ int pgServer::Connect(frmMain *form, bool askPassword, const wxString &pwd, bool
 		if (conn->BackendMinimumVersion(9, 1))
 		{
 			sql += wxT(", CASE WHEN usesuper THEN pg_last_xact_replay_timestamp() ELSE NULL END as replay_timestamp");
-			if (conn->GetMajorVersion() == SERVER_PG10_VERSION_N)
+			if (conn->BackendMinimumVersion(10, 0))
 				sql += wxT(", CASE WHEN usesuper AND pg_is_in_recovery() THEN pg_is_wal_replay_paused() ELSE NULL END as isreplaypaused");
 			else
 				sql += wxT(", CASE WHEN usesuper AND pg_is_in_recovery() THEN pg_is_xlog_replay_paused() ELSE NULL END as isreplaypaused");
