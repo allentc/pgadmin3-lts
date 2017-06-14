@@ -73,7 +73,7 @@ void frmSplash::OnPaint(wxPaintEvent &WXUNUSED(event))
 	}
 	dc.DrawText(VERSION_WITHOUT_DATE, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
-	dc.DrawText(COPYRIGHT_BIGSQL, pos);
+	dc.DrawText(COPYRIGHT_OPENSCG, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
 	dc.DrawText(COPYRIGHT_PGADMIN, pos);
 	pos.y += appearanceFactory->GetSplashTextOffset();
