@@ -1,3 +1,10 @@
+** Fork info **
+
+Apparently I have become the maintainer of this code by virtue of having
+preserved the last remaining fork of the BigSQL fork of pgadmin3-lts.
+Although there is no active development I have and will continue to review
+and accept pull requests.  Also, this GitHub repo will not vanish.
+
 **# pgAdmin3 LTS by BigSQL README #**
 
 This is a fork of the pgAdmin3 project that aims to continue to support 
