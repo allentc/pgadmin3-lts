@@ -59,8 +59,10 @@
 // Supported server minimum and maximum values.
 const short SERVER_MIN_VERSION_N = 0x0804;
 const wxString SERVER_MIN_VERSION_T = wxT("8.4");
-const short SERVER_MAX_VERSION_N = 0x0B00;
-const wxString SERVER_MAX_VERSION_T = wxT("11.0");
+/*ABDUL:BEGIN*/
+const short SERVER_MAX_VERSION_N = 0x0C00;
+const wxString SERVER_MAX_VERSION_T = wxT("12.0");
+/*ABDUL:END*/
 
 // Supported Greenplum Database and Greenplum HAWQ minimum and maximum values.
 const short GP_MIN_VERSION_N = 0x0802;

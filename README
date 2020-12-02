@@ -35,3 +35,8 @@ Sockets (on *nix platforms), and may be SSL encrypted for security. No
 additional drivers are required to communicate with the database server.
 
 pgAdmin3 is Free Software released under the PostgreSQL License.
+
+Typical configure option
+------------------------
+
+$ ./configure --prefix=/opt/pgadmin3bigsql --with-pgsql=/opt/pgsql/12 --with-libgcrypt CFLAGS=-fPIC CXXFLAGS=-fPIC

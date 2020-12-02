@@ -1432,13 +1432,28 @@ pgObject *pgTableFactory::CreateObjects(pgCollection *collection, ctlTree *brows
 	pgSet *tables;
 	if (collection->GetConnection()->BackendMinimumVersion(8, 0))
 	{
-		query = wxT("SELECT rel.oid, rel.relname, rel.reltablespace AS spcoid, spc.spcname, pg_get_userbyid(rel.relowner) AS relowner, rel.relacl, rel.relhasoids, ")
+		/*ABDUL:BEGIN*/
+/*		query = wxT("SELECT rel.oid, rel.relname, rel.reltablespace AS spcoid, spc.spcname, pg_get_userbyid(rel.relowner) AS relowner, rel.relacl, rel.relhasoids, ")
 		        wxT("rel.relhassubclass, rel.reltuples, des.description, con.conname, con.conkey,\n")
 		        wxT("       EXISTS(select 1 FROM pg_trigger\n")
 		        wxT("                       JOIN pg_proc pt ON pt.oid=tgfoid AND pt.proname='logtrigger'\n")
 		        wxT("                       JOIN pg_proc pc ON pc.pronamespace=pt.pronamespace AND pc.proname='slonyversion'\n")
+		        wxT("                     WHERE tgrelid=rel.oid) AS isrepl,\n");*/
+		query = wxT("SELECT rel.oid, rel.relname, rel.reltablespace AS spcoid, spc.spcname, pg_get_userbyid(rel.relowner) AS relowner, rel.relacl,");
+		if (collection->GetConnection()->BackendMinimumVersion(12, 0))
+		{
+			query += wxT("false as relhasoids,");
+		}
+		else
+		{
+			query += wxT("rel.relhasoids,");
+		}
+		query += wxT("rel.relhassubclass, rel.reltuples, des.description, con.conname, con.conkey,\n")
+		        wxT("       EXISTS(select 1 FROM pg_trigger\n")
+		        wxT("                       JOIN pg_proc pt ON pt.oid=tgfoid AND pt.proname='logtrigger'\n")
+		        wxT("                       JOIN pg_proc pc ON pc.pronamespace=pt.pronamespace AND pc.proname='slonyversion'\n")
 		        wxT("                     WHERE tgrelid=rel.oid) AS isrepl,\n");
-
+		/*ABDUL:END*/
 		if (collection->GetConnection()->BackendMinimumVersion(9, 0))
 		{
 			query += wxT("       (select count(*) FROM pg_trigger\n")
@@ -1513,9 +1528,12 @@ pgObject *pgTableFactory::CreateObjects(pgCollection *collection, ctlTree *brows
 
 		if (collection->GetConnection()->BackendMinimumVersion(9, 0))
 			query += wxT("LEFT JOIN pg_type typ ON rel.reloftype=typ.oid\n");
-
-		query += wxT(" WHERE rel.relkind IN ('r','s','t') AND rel.relnamespace = ") + collection->GetSchema()->GetOidStr() + wxT("\n");
-
+/*ABDUL:BEGIN*/
+		/*query += wxT(" WHERE rel.relkind IN ('r','s','t') AND rel.relnamespace = ") + collection->GetSchema()->GetOidStr() + wxT("\n");*/
+		query += wxString::Format( wxT(" WHERE rel.relkind IN (%s) AND rel.relnamespace = "),
+                    collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT("'r','s','t','p'") : wxT("'r','s','t'")
+			) + collection->GetSchema()->GetOidStr() + wxT("\n");
+/*ABDUL:END*/
 		// Greenplum: Eliminate (sub)partitions from the display, only show the parent partitioned table
 		// and eliminate external tables
 		if (collection->GetConnection()->GetIsGreenplum() && collection->GetConnection()->BackendMinimumVersion(8, 2, 9))
