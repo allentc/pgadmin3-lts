@@ -335,13 +335,18 @@ wxString pgTable::GetSql(ctlTree *browser)
 		// of type (9.0 material)
 		if (ofTypeOid > 0)
 			sql += wxT("\nOF ") + qtIdent(ofType);
-
+				
 		// Get a count of the constraints.
 		int consCount = 0;
 		pgCollection *constraints = browser->FindCollection(primaryKeyFactory, GetId());
 		if (constraints)
 			consCount = browser->GetChildrenCount(constraints->GetId());
 
+	/*ABDUL:BEGIN*/
+		int localColDefs = 0;
+		int constraintDefs = 0;
+	/*ABDUL:END*/
+		
 		// Get the columns
 		pgCollection *columns = browser->FindCollection(columnFactory, GetId());
 		if (columns)
@@ -369,6 +374,9 @@ wxString pgTable::GetSql(ctlTree *browser)
 			while ((column = (pgColumn *)colIt2.GetNextObject()) != 0)
 			{
 				column->ShowTreeDetail(browser);
+			/*ABDUL:BEGIN*/
+				localColDefs++;
+			/*ABDUL:END*/
 				if (column->GetColNumber() > 0)
 				{
 					if (colCount)
@@ -388,6 +396,9 @@ wxString pgTable::GetSql(ctlTree *browser)
 						{
 							cols_sql += wxString::Format(wxT("-- %s "), _("Inherited"))
 							            + wxT("from table ") +  column->GetInheritedTableName() + wxT(":");
+						/*ABDUL:BEGIN*/								
+							localColDefs--;
+						/*ABDUL:END*/
 						}
 					}
 
@@ -435,7 +446,7 @@ wxString pgTable::GetSql(ctlTree *browser)
 					columnPrivileges += column->GetPrivileges();
 				}
 			}
-		}
+		}//if (columns)
 
 		// Now iterate the constraints
 		if (constraints)
@@ -447,6 +458,10 @@ wxString pgTable::GetSql(ctlTree *browser)
 
 			while ((data = consIt.GetNextObject()) != 0)
 			{
+			/*ABDUL:BEGIN*/
+				constraintDefs++;
+			/*ABDUL:END*/
+				
 				data->ShowTreeDetail(browser);
 
 				cols_sql += wxT(",");
@@ -487,12 +502,73 @@ wxString pgTable::GetSql(ctlTree *browser)
 		if (!prevComment.IsEmpty())
 			cols_sql += wxT(" -- ") + firstLineOnly(prevComment);
 
-		sql += wxT("\n(\n") + cols_sql + wxT("\n)");
+	/*ABDUL:BEGIN*/	
+		wxString partitionBy, partitionOf, forValues;
+		if (GetConnection()->BackendMinimumVersion(12, 0)) {
+			pgSet *set = ExecuteSet(
+				wxT("SELECT CASE WHEN p.partstrat IS NOT NULL THEN 'PARTITION BY ' ||")
+					wxT("(CASE WHEN p.partstrat = 'h' THEN 'HASH' WHEN p.partstrat = 'l' THEN 'LIST' WHEN p.partstrat = 'r' THEN 'RANGE'")
+					wxT(" ELSE 'UNKNOWN' END)")
+					wxT(" || ' (' || QUOTE_IDENT(attr.fields) || ')'")
+					wxT(" ELSE '' END AS partitionby")
+				wxT(",CASE WHEN c.relispartition THEN 'PARTITION OF ' || COALESCE(QUOTE_IDENT(nparent.nspname) || '.' || QUOTE_IDENT(parent.relname), 'UNKNOWN') ELSE '' END AS partitionof")
+				wxT(",pg_get_expr(c.relpartbound, c.oid, true) AS forvalues")
+				wxT(" FROM pg_class c")
+				wxT(" INNER JOIN pg_namespace n ON n.oid = c.relnamespace")
+				wxT(" LEFT JOIN pg_partitioned_table p ON p.partrelid = c.oid")
+				wxT(" LEFT JOIN LATERAL (")
+					wxT("SELECT string_agg(a.attname, ',') as fields")
+					wxT(" FROM pg_attribute a")
+					wxT(" WHERE p.partnatts>0 AND a.attrelid = p.partrelid AND a.attnum = any(p.partattrs)")
+				wxT(") attr ON true")
+				wxT(" LEFT JOIN pg_inherits i ON i.inhrelid = c.oid")
+				wxT(" LEFT JOIN pg_class parent ON parent.oid = i.inhparent")
+				wxT(" LEFT JOIN pg_namespace nparent ON nparent.oid = parent.relnamespace")
+				wxT(" WHERE c.oid =") + GetOidStr()
+				);
+			if (set)
+			{
+				partitionBy = set->GetVal(0);
+				partitionOf = set->GetVal(1);
+				forValues = set->GetVal(2);
+				delete set;
+			}
+			if( !partitionOf.IsNull() )
+			{
+				sql += wxT(" ") + partitionOf;	
+			}					
+		}
+	/*ABDUL:END*/
+	
+	/*ABDUL:BEGIN*/
+		//sql += wxT("\n(\n") + cols_sql + wxT("\n)");
+		if(localColDefs>0 || constraintDefs>0) {
+			sql += wxT("\n(\n") + cols_sql + wxT("\n)");
+		} else {
+			sql += wxT("\n-- (\n") + cols_sql + wxT("\n-- )");
+		}
+	/*ABDUL:END*/	
 
-		if (GetInheritedTableCount())
+	/*ABDUL:BEGIN*/
+		/*if (GetInheritedTableCount())
 		{
 			sql += wxT("\nINHERITS (") + GetQuotedInheritedTables() + wxT(")");
+		}*/
+		if (GetConnection()->BackendMinimumVersion(12, 0)) {
+			if( !forValues.IsNull() )
+			{
+				sql += wxT("\n") + forValues;
+			}
+			if( !partitionBy.IsNull() )
+			{
+				sql += wxT("\n") + partitionBy;
+			}
 		}
+		else if (GetInheritedTableCount())
+		{
+			sql += wxT("\nINHERITS (") + GetQuotedInheritedTables() + wxT(")");
+		}		
+	/*ABDUL:END*/	
 
 		if (GetConnection()->BackendMinimumVersion(8, 2))
 		{
@@ -709,7 +785,7 @@ wxString pgTable::GetSql(ctlTree *browser)
 		    AppendStuffNoSql(sql, browser, partitionFactory);
 		}
 		 */
-	}
+	}//if (sql.IsNull())
 	return sql;
 }
 
@@ -1432,13 +1508,28 @@ pgObject *pgTableFactory::CreateObjects(pgCollection *collection, ctlTree *brows
 	pgSet *tables;
 	if (collection->GetConnection()->BackendMinimumVersion(8, 0))
 	{
-		query = wxT("SELECT rel.oid, rel.relname, rel.reltablespace AS spcoid, spc.spcname, pg_get_userbyid(rel.relowner) AS relowner, rel.relacl, rel.relhasoids, ")
+		/*ABDUL:BEGIN*/
+/*		query = wxT("SELECT rel.oid, rel.relname, rel.reltablespace AS spcoid, spc.spcname, pg_get_userbyid(rel.relowner) AS relowner, rel.relacl, rel.relhasoids, ")
 		        wxT("rel.relhassubclass, rel.reltuples, des.description, con.conname, con.conkey,\n")
 		        wxT("       EXISTS(select 1 FROM pg_trigger\n")
 		        wxT("                       JOIN pg_proc pt ON pt.oid=tgfoid AND pt.proname='logtrigger'\n")
 		        wxT("                       JOIN pg_proc pc ON pc.pronamespace=pt.pronamespace AND pc.proname='slonyversion'\n")
+		        wxT("                     WHERE tgrelid=rel.oid) AS isrepl,\n");*/
+		query = wxT("SELECT rel.oid, rel.relname, rel.reltablespace AS spcoid, spc.spcname, pg_get_userbyid(rel.relowner) AS relowner, rel.relacl,");
+		if (collection->GetConnection()->BackendMinimumVersion(12, 0))
+		{
+			query += wxT("false as relhasoids,");
+		}
+		else
+		{
+			query += wxT("rel.relhasoids,");
+		}
+		query += wxT("rel.relhassubclass, rel.reltuples, des.description, con.conname, con.conkey,\n")
+		        wxT("       EXISTS(select 1 FROM pg_trigger\n")
+		        wxT("                       JOIN pg_proc pt ON pt.oid=tgfoid AND pt.proname='logtrigger'\n")
+		        wxT("                       JOIN pg_proc pc ON pc.pronamespace=pt.pronamespace AND pc.proname='slonyversion'\n")
 		        wxT("                     WHERE tgrelid=rel.oid) AS isrepl,\n");
-
+		/*ABDUL:END*/
 		if (collection->GetConnection()->BackendMinimumVersion(9, 0))
 		{
 			query += wxT("       (select count(*) FROM pg_trigger\n")
@@ -1513,9 +1604,12 @@ pgObject *pgTableFactory::CreateObjects(pgCollection *collection, ctlTree *brows
 
 		if (collection->GetConnection()->BackendMinimumVersion(9, 0))
 			query += wxT("LEFT JOIN pg_type typ ON rel.reloftype=typ.oid\n");
-
-		query += wxT(" WHERE rel.relkind IN ('r','s','t') AND rel.relnamespace = ") + collection->GetSchema()->GetOidStr() + wxT("\n");
-
+/*ABDUL:BEGIN*/
+		/*query += wxT(" WHERE rel.relkind IN ('r','s','t') AND rel.relnamespace = ") + collection->GetSchema()->GetOidStr() + wxT("\n");*/
+		query += wxString::Format( wxT(" WHERE rel.relkind IN (%s) AND rel.relnamespace = "),
+                    collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT("'r','s','t','p'") : wxT("'r','s','t'")
+			) + collection->GetSchema()->GetOidStr() + wxT("\n");
+/*ABDUL:END*/
 		// Greenplum: Eliminate (sub)partitions from the display, only show the parent partitioned table
 		// and eliminate external tables
 		if (collection->GetConnection()->GetIsGreenplum() && collection->GetConnection()->BackendMinimumVersion(8, 2, 9))

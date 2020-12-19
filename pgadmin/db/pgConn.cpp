@@ -192,9 +192,6 @@ pgConn::pgConn(const wxString &server, const wxString &service, const wxString &
 		}
 	}
 
-	connstr.Append(wxT(" keepalives=1"));
-	connstr.Append(wxT(" keepalives_idle=30"));
-
 	connstr.Trim(false);
 
 	dbHost = server;
