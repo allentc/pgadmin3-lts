@@ -749,8 +749,6 @@ AC_DEFUN([SETUP_WXWIDGETS],
 		else
 			WX_NEW_CPPFLAGS=`${WX_CONFIG} --cppflags --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
 			CPPFLAGS="$CPPFLAGS $WX_NEW_CPPFLAGS -DEMBED_XRC"
-			CFLAGS=`echo $CFLAGS | sed -e "s/-g //g"`
-			CXXFLAGS=`echo $CXXFLAGS | sed -e "s/-g //g"`
 		
 			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
 			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
