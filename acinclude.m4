@@ -469,7 +469,7 @@ AC_DEFUN([SETUP_POSTGRESQL],
 
 		AC_LANG_SAVE    
 		AC_LANG_C	       
-		AC_CHECK_LIB(ssl, SSL_library_init, [LIB_SSL=yes], [LIB_SSL=no])
+		AC_CHECK_LIB(ssl, OPENSSL_init_ssl, [LIB_SSL=yes], [LIB_SSL=no])
 		AC_LANG_RESTORE	 
 
 		AC_LANG_SAVE    
