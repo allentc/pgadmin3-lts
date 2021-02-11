@@ -44,11 +44,16 @@ Code has been changed to adapt PostgreSQL internal changes up to version 13.1:
 - No more adsrc in pg_attrdef, it should be calculated as pg_catalog.pg_get_expr(adbin, adrelid) instead.
 - Declarative Table Partitioning DDL.
 
-Typical configure option
+If you are too lazy to read [INSTALL](./INSTALL) instructions, then try this for Debian/Ubuntu/Mint:
 ------------------------
 ```
+# apt-get install libwxgtk3.0-dev wx3.0-headers wxgtk3.0 wx3.0
+
+# apt-get install postgresql-13 postgresql-contrib-13 postgresql-client-13 libjson-perl libpq-dev
+# systemctl restart postgresql
+
 $ bash bootstrap
-$ ./configure --prefix=/opt/pgadmin3bigsql --with-pgsql=/opt/pgsql/12 --with-libgcrypt CFLAGS=-fPIC CXXFLAGS=-fPIC
-$ make
+$ ./configure --prefix=/opt/pgadmin3bigsql --with-pgsql=/usr/lib/postgresql/13 --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC
+$ make -j8
 $ sudo make install
 ```
