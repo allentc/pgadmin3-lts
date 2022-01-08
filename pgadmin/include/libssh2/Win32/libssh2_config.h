@@ -24,7 +24,9 @@
 #define HAVE_SELECT
 
 #ifdef _MSC_VER
+#if _MSC_VER < 1900
 #define snprintf _snprintf
+#endif
 #if _MSC_VER < 1500
 #define vsnprintf _vsnprintf
 #endif
