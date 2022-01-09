@@ -137,9 +137,9 @@ Windows
 
 You will need:
 
-- Windows 2000 or above.
-- Microsoft Visual C++ 2010.
-- The Windows 2010 Platform SDK.
+- Windows 10 or above.
+- Microsoft Visual C++ 2022.
+- The Windows 10 Platform SDK.
 - Windows Installer XML v3.
 - wxMSW 2.8.11 or above from http://www.wxwidgets.org/
 - libxml2 2.6.18 or above from http://www.xmlsoft.org/
