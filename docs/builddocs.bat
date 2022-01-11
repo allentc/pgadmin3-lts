@@ -6,7 +6,7 @@ CALL make.bat htmlhelp
 cd ..
 
 REM Compile the HTML Help
-"%ProgramFiles%\HTML Help Workshop\hhc.exe" ./en_US/_build/htmlhelp/pgadmin3.hhp
+"%ProgramFiles(x86)%\HTML Help Workshop\hhc.exe" ./en_US/_build/htmlhelp/pgadmin3.hhp
 
 IF EXIST %WXWIN%\utils\hhp2cached\vc_mswu (SET BUILDDIR=vc_mswu) ELSE (SET BUILDDIR=vc_mswudll)
 

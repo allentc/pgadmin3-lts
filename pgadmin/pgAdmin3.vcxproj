@@ -43,49 +43,49 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (3.0)|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (3.0)|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (3.0)|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -283,7 +283,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;LIBSSH2_OPENSSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pgadmin3.h</PrecompiledHeaderFile>
@@ -296,7 +295,7 @@
       <BrowseInformationFile>.\Debug/</BrowseInformationFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -343,7 +342,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pgadmin3.h</PrecompiledHeaderFile>
@@ -403,7 +401,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(OPENSSL)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pgadmin3.h</PrecompiledHeaderFile>
@@ -463,7 +460,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pgadmin3.h</PrecompiledHeaderFile>
