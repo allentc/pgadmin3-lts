@@ -21,6 +21,18 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
+    - name: Set environment variables
+      shell: cmd
+      run: |
+        echo PGDIR=%GITHUB_WORKSPACE%\postgres-binaries\pgsql>> %GITHUB_ENV%
+
+    - name: Download and unpack PostgreSQL
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://get.enterprisedb.com/postgresql/postgresql-9.2.24-1-windows-binaries.zip?ls=Crossover&type=Crossover" -OutFile postgres-binaries.zip
+        7z.exe x postgres-binaries.zip -o${{env.PGDIR}}\..
+
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
