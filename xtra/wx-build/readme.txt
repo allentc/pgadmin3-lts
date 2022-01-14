@@ -34,11 +34,11 @@ debug symbols. it will be installed in the default location, /usr/local/
 MSW
 ===
 
-Download wxMSW to ..\..\..\pgadmin3-deps\wxWidgets
-
-Run "build-wxmsw.bat" to from a Visual Studio 2008 commandprompt to build the 
-required parts of wxWidgets in both release and debug builds (unicode, DLL).
-
+Because of using the binary distribution of wxWidgets you do not need to
+build it. However, you need the tool "hhp2cached" to build the pgAdmin3
+documentation. Since that tool is not part of the binary distribution you
+need to build it from the wxWidgets sources. The process is outlined in the
+INSTALL file.
 
 Additional tips - VC++
 ----------------------

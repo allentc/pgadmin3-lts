@@ -9,8 +9,6 @@
 
 EXTRA_DIST = \
 	$(srcdir)/readme.txt \
-	$(srcdir)/setup0-msw-2.8.h \
 	$(srcdir)/build-wxgtk \
 	$(srcdir)/build-wxmac \
-	$(srcdir)/build-wxmsw.bat \
 	$(srcdir)/patches/wxmac-2_8_12-font-dialogue.diff

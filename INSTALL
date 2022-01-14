@@ -141,7 +141,13 @@ You will need:
 - Microsoft Visual C++ 2022.
 - The Windows 10 Platform SDK.
 - Windows Installer XML v3.
-- wxMSW 2.8.11 or above from http://www.wxwidgets.org/
+- wxMSW 3.0.5 or above from http://www.wxwidgets.org/
+  If you only want to build the pgAdmin3 binary you need the packages
+   - Header Files
+   - Development Files
+   - Release DLLs
+  If you want to build the documentation and/or the installer you additionally
+  need the package "Source Code".
 - libxml2 2.6.18 or above from http://www.xmlsoft.org/
 - libxslt 1.1.x or above from http://www.xmlsoft.org/
 - iconv 1.9.x or above from http://gnuwin32.sourceforge.net/
@@ -158,12 +164,17 @@ libxslt.
 
 Building:
 
-1) Unpack the wxMSW source code to a convenient location pointed to by the 
+1) Unpack the wxMSW packages to a convenient location pointed to by the 
    %WXWIN% environment variable.
 
-2) Build wxMSW.  To do this, run the build-wxmsw.bat script from the
-   xtra/wx-build directory in the pgAdmin source tree, in a Visual C++ 
-   command prompt window.
+2) If you later want to build the pgAdmin3 documentation/installer you
+   need to build the tool "hhp2cached":
+   - Open a Visual Studio Developer Command Prompt
+   - Navigate to %WXWIN%\utils\hhp2cached\
+   - Run
+       echo SHARED = 1 >> ..\..\build\msw\config.vc
+       echo BUILD = release>> ..\..\build\msw\config.vc
+       nmake -f makefile.vc COMPILER_VERSION=142
 
 3) Install PostgreSQL 9.2.24 to a convenient location pointed to by the %PGDIR%
    environment variable.
