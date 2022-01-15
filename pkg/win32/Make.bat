@@ -24,11 +24,7 @@ REM
 
 if NOT "%1"=="" GOTO REGEN_GUIDS
 
-echo Invalid command line options.
-echo Usage: "Make.bat <Major.Minor version number>"
-echo        "Make.bat REGENGUIDS"
-echo.
-GOTO EXIT
+GOTO ERR_USAGE
 
 
 
@@ -71,6 +67,13 @@ GOTO EXIT
 :ERR_HANDLER
 echo.
 echo Aborting build!
+GOTO EXIT
+
+:ERR_USAGE
+echo Invalid command line options.
+echo Usage: "Make.bat <Major.Minor version number>"
+echo        "Make.bat REGENGUIDS"
+echo.
 GOTO EXIT
 
 
