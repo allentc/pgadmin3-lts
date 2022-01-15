@@ -138,7 +138,7 @@ Windows
 You will need:
 
 - Windows 10 or above.
-- Microsoft Visual C++ 2022.
+- Microsoft Visual C++ 2019.
 - The Windows 10 Platform SDK.
 - WiX toolset v3 from https://wixtoolset.org/
 - wxMSW 3.0.5 or above from http://www.wxwidgets.org/

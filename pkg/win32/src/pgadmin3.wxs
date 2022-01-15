@@ -47,7 +47,7 @@
                             <File Id="core_libs.wxmsw30u_xrc_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxmsw30u_xrc_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxmsw30u_xrc_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />
                         </Component>
 
-                        <Merge Id="CRT" Language="0" SourceFile="$(env.ProgramFiles)\Common Files\Merge Modules\Microsoft_VC120_CRT_x86.msm" DiskId="1" />
+                        <Merge Id="CRT" Language="0" SourceFile="$(var.VC_TOOLS_REDIST_INSTALL_DIR)\MergeModules\Microsoft_VC$(var.PLATFORM_TOOLSET_VERSION)_CRT_x86.msm" DiskId="1" />
 
                         <Component Id="pgadmin_exes" Guid="{5EA77DAF-4AD7-4F9F-AC4B-C21B5299E8F8}">
                             <File Id="pgadmin_exes.pgadmin3.exe" Name="pgadmin3.exe" DiskId="1" Source="$(var.BUILDTREE)/pgadmin/Release/pgAdmin3.exe" KeyPath="yes" />
