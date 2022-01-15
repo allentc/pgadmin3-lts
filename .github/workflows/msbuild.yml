@@ -27,6 +27,11 @@ jobs:
         echo WXWIN=%GITHUB_WORKSPACE%\wxWidgets>> %GITHUB_ENV%
         echo PGDIR=%GITHUB_WORKSPACE%\postgres-binaries\pgsql>> %GITHUB_ENV%
 
+    - name: Install sphinx
+      if: ${{ matrix.build_conf == 'Release' }}
+      shell: cmd
+      run: pip install Sphinx
+
     - name: Download and unpack wxWidgets headers
       if: ${{ matrix.build_conf != 'Release' }}
       working-directory: ${{env.GITHUB_WORKSPACE}}
