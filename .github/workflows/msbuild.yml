@@ -24,7 +24,22 @@ jobs:
     - name: Set environment variables
       shell: cmd
       run: |
+        echo WXWIN=%GITHUB_WORKSPACE%\wxWidgets>> %GITHUB_ENV%
         echo PGDIR=%GITHUB_WORKSPACE%\postgres-binaries\pgsql>> %GITHUB_ENV%
+
+    - name: Download and unpack wxWidgets headers
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5-headers.7z" -OutFile wxWidgets-headers.7z
+        7z.exe x wxWidgets-headers.7z -o${{env.WXWIN}}
+
+    - name: Download and unpack wxWidgets developer files
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxMSW-3.0.5_vc142_Dev.7z" -OutFile wxWidgets-devel.7z
+        7z.exe x wxWidgets-devel.7z -o${{env.WXWIN}}
 
     - name: Download and unpack PostgreSQL
       working-directory: ${{env.GITHUB_WORKSPACE}}
