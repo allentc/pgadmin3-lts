@@ -140,7 +140,7 @@ You will need:
 - Windows 10 or above.
 - Microsoft Visual C++ 2022.
 - The Windows 10 Platform SDK.
-- Windows Installer XML v3.
+- WiX toolset v3 from https://wixtoolset.org/
 - wxMSW 3.0.5 or above from http://www.wxwidgets.org/
   If you only want to build the pgAdmin3 binary you need the packages
    - Header Files

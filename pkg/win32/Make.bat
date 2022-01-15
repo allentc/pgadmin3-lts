@@ -9,9 +9,7 @@ SET APPNAME=pgAdmin III
 SET APPKEYWORDS=PostgreSQL, pgAdmin
 SET APPCOMMENTS=PostgreSQL Tools
 SET APPDESCRIPTION=Management and administration tools for the PostgreSQL DBMS
-IF NOT (%WIXDIR%)==() GOTO DONE_WIXDIR
-SET WIXDIR="C:\Program Files (x86)\Windows Installer XML v3\bin"
-:DONE_WIXDIR
+IF "%WIX%"=="" GOTO ERR_NOWIX
 
 SET BUILDTREE="../.."
 
@@ -56,10 +54,10 @@ if "%2"=="" GOTO ERR_USAGE
 echo.
 echo Building %APPNAME% Installer...
 
-%WIXDIR%\candle -nologo -dWXDIR="%WXWIN%" -dPLATFORM_TOOLSET_VERSION=%2 -dPGDIR="%PGDIR%" -dBUILDTREE="%BUILDTREE%" -dBRANDED=%BRANDED% -dBRANDINGDIR="%BRANDINGDIR%" -dAPPVENDOR="%APPVENDOR%" -dAPPNAME="%APPNAME%" -dAPPKEYWORDS="%APPKEYWORDS%" -dAPPCOMMENTS="%APPCOMMENTS%" -dAPPDESCRIPTION="%APPDESCRIPTION%" -dAPPVERSION="%1" -dSYSTEM32DIR="%SystemRoot%\System32" -dPFILESDIR="%ProgramFiles%" src/pgadmin3.wxs
+"%WIX%\bin\candle" -nologo -dWXDIR="%WXWIN%" -dPLATFORM_TOOLSET_VERSION=%2 -dPGDIR="%PGDIR%" -dBUILDTREE="%BUILDTREE%" -dBRANDED=%BRANDED% -dBRANDINGDIR="%BRANDINGDIR%" -dAPPVENDOR="%APPVENDOR%" -dAPPNAME="%APPNAME%" -dAPPKEYWORDS="%APPKEYWORDS%" -dAPPCOMMENTS="%APPCOMMENTS%" -dAPPDESCRIPTION="%APPDESCRIPTION%" -dAPPVERSION="%1" -dSYSTEM32DIR="%SystemRoot%\System32" -dPFILESDIR="%ProgramFiles%" src/pgadmin3.wxs
 IF ERRORLEVEL 1 GOTO ERR_HANDLER
 
-%WIXDIR%\light -sice:ICE03 -sice:ICE25 -sice:ICE82 -sw1101 -nologo -ext WixUIExtension -cultures:en-us pgadmin3.wixobj
+"%WIX%\bin\light" -sice:ICE03 -sice:ICE25 -sice:ICE82 -sw1101 -nologo -ext WixUIExtension -cultures:en-us pgadmin3.wixobj
 IF ERRORLEVEL 1 GOTO ERR_HANDLER
 
 echo.
@@ -76,6 +74,11 @@ echo Invalid command line options.
 echo Usage: "Make.bat <Major.Minor version number> <Platform toolset version>"
 echo        "Make.bat REGENGUIDS"
 echo.
+GOTO EXIT
+
+:ERR_NOWIX
+echo WiX directory not configured!
+echo Please make sure the environment variable WIX points to the correct location.
 GOTO EXIT
 
 
