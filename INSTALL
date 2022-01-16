@@ -148,19 +148,10 @@ You will need:
    - Release DLLs
   If you want to build the documentation and/or the installer you additionally
   need the package "Source Code".
-- libxml2 2.6.18 or above from http://www.xmlsoft.org/
-- libxslt 1.1.x or above from http://www.xmlsoft.org/
-- iconv 1.9.x or above from http://gnuwin32.sourceforge.net/
-  (note: as of this writing, the correct iconv package to download is
-  the one called "Developer Files")
 - PostgreSQL 9.2.24 (binary distribution) from http://www.postgresql.org/
 - PostgreSQL 10.19 or later (binary distribution) from http://www.postgresql.org/
 - Sphinx 1.0 or above from http://sphinx.pocoo.org/
 - Microsoft HTML Help Workshop
-
-Precompiled XML/XSLT and dependency packages for Windows can be found at 
-http://zlatkovic.com. You probably need zlib 1.2.x as well as libxml2 and 
-libxslt.
 
 Building:
 
@@ -181,25 +172,13 @@ Building:
    
 4) Unpack the pgAdmin source code to a convenient location.
 
-5) Set up a pgbuild directory in a location of your choice (e.g. C:\pgbuild)
-   and configure the %PGBUILD% environment variable to point to it.  This
-   directory must have subdirectories called libxslt, libxml2, and iconv, each
-   of which must contain the files from the corresponding package.  The
-   archives will probably unpack with some longer name, like
-   libxslt-1.1.26.win32; just rename them to remove the suffix.
-
-   Some versions of the iconv package ship the iconv libraries under different
-   names than what pgAdmin expects.  If pgAdmin can't find the iconv
-   libraries, you may need to rename libiconv.a to iconv_a.lib and
-   libiconv.dll.a to iconv.lib.
-   
-6) Start Visual C++ and load the pgAdmin solution file. Build the required 
+5) Start Visual C++ and load the pgAdmin solution file. Build the required 
    targets.
 
-7) To run the resulting executable, you'll need to copy all of the
-   prerequisite DLLs from the wxWidgets and PostgreSQL installations and the 
-   various subdirectories of %PGBUILD% into the directory where the EXE file
-   is located, or have those directories in your path.
+6) To run the resulting executable, you'll need to copy all of the
+   prerequisite DLLs from the wxWidgets and PostgreSQL installations into the
+   directory where the EXE file is located, or have those directories in your
+   path.
    To actually connect to a Postgres-Server higher than 11 that is using SCRAM-
    authentication you need the "libpq.dll" from the Postgres 10.19 (or later)
    package.
