@@ -43,49 +43,49 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (3.0)|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (3.0)|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (3.0)|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -168,7 +168,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswu/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswu/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;NDEBUG;WIN32;_WINDOWS;__WINDOWS__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;__WXMSW__;WXUSINGDLL;wxUSE_UNICODE=1;UNICODE;EMBED_XRC;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -190,10 +190,10 @@
       <AdditionalIncludeDirectories>$(WXWIN)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase28u.lib;wxbase28u_xml.lib;wxbase28u_net.lib;wxmsw28u_adv.lib;wxmsw28u_core.lib;wxmsw28u_html.lib;wxmsw28u_aui.lib;wxregexu.lib;wxpng.lib;wxzlib.lib;wxjpeg.lib;wxtiff.lib;wxmsw28u_stc.lib;wxmsw28u_xrc.lib;wxexpat.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30u.lib;wxbase30u_xml.lib;wxbase30u_net.lib;wxmsw30u_adv.lib;wxmsw30u_core.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxregexu.lib;wxpng.lib;wxzlib.lib;wxjpeg.lib;wxtiff.lib;wxmsw30u_stc.lib;wxmsw30u_xrc.lib;wxexpat.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Release/pgAdmin3.pdb</ProgramDatabaseFile>
@@ -223,7 +223,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswu/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswu/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;NDEBUG;WIN32;_WINDOWS;__WINDOWS__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;__WXMSW__;WXUSINGDLL;wxUSE_UNICODE=1;UNICODE;EMBED_XRC;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -245,10 +245,10 @@
       <AdditionalIncludeDirectories>$(WXWIN)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase28u.lib;wxbase28u_xml.lib;wxbase28u_net.lib;wxmsw28u_adv.lib;wxmsw28u_core.lib;wxmsw28u_html.lib;wxmsw28u_aui.lib;wxregexu.lib;wxpng.lib;wxzlib.lib;wxjpeg.lib;wxtiff.lib;wxmsw28u_stc.lib;wxmsw28u_xrc.lib;wxexpat.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30u.lib;wxbase30u_xml.lib;wxbase30u_net.lib;wxmsw30u_adv.lib;wxmsw30u_core.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxregexu.lib;wxpng.lib;wxzlib.lib;wxjpeg.lib;wxtiff.lib;wxmsw30u_stc.lib;wxmsw30u_xrc.lib;wxexpat.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Release/pgAdmin3.pdb</ProgramDatabaseFile>
@@ -281,7 +281,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;LIBSSH2_OPENSSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -303,10 +303,10 @@
       <AdditionalIncludeDirectories>$(WXWIN)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase28ud.lib;wxbase28ud_xml.lib;wxbase28ud_net.lib;wxmsw28ud_adv.lib;wxmsw28ud_core.lib;wxmsw28ud_html.lib;wxmsw28ud_aui.lib;wxregexud.lib;wxpngd.lib;wxzlibd.lib;wxjpegd.lib;wxtiffd.lib;wxmsw28ud_stc.lib;wxmsw28ud_xrc.lib;wxexpatd.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;oleaut32.lib;ole32.lib;shell32.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30ud.lib;wxbase30ud_xml.lib;wxbase30ud_net.lib;wxmsw30ud_adv.lib;wxmsw30ud_core.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxregexud.lib;wxpngd.lib;wxzlibd.lib;wxjpegd.lib;wxtiffd.lib;wxmsw30ud_stc.lib;wxmsw30ud_xrc.lib;wxexpatd.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;oleaut32.lib;ole32.lib;shell32.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/pgAdmin3.pdb</ProgramDatabaseFile>
@@ -340,7 +340,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -362,10 +362,10 @@
       <AdditionalIncludeDirectories>$(WXWIN)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase28ud.lib;wxbase28ud_xml.lib;wxbase28ud_net.lib;wxmsw28ud_adv.lib;wxmsw28ud_core.lib;wxmsw28ud_html.lib;wxmsw28ud_aui.lib;wxregexud.lib;wxpngd.lib;wxzlibd.lib;wxjpegd.lib;wxtiffd.lib;wxmsw28ud_stc.lib;wxmsw28ud_xrc.lib;wxexpatd.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;oleaut32.lib;ole32.lib;shell32.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30ud.lib;wxbase30ud_xml.lib;wxbase30ud_net.lib;wxmsw30ud_adv.lib;wxmsw30ud_core.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxregexud.lib;wxpngd.lib;wxzlibd.lib;wxjpegd.lib;wxtiffd.lib;wxmsw30ud_stc.lib;wxmsw30ud_xrc.lib;wxexpatd.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;oleaut32.lib;ole32.lib;shell32.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/pgAdmin3.pdb</ProgramDatabaseFile>
@@ -399,7 +399,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(OPENSSL)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswud/;$(WXWIN)/include;$(OPENSSL)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -424,7 +424,7 @@
       <AdditionalDependencies>wxbase30ud.lib;wxbase30ud_xml.lib;wxbase30ud_net.lib;wxmsw30ud_adv.lib;wxmsw30ud_core.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxregexud.lib;wxpngd.lib;wxzlibd.lib;wxjpegd.lib;wxtiffd.lib;wxmsw30ud_stc.lib;wxmsw30ud_xrc.lib;wxexpatd.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;oleaut32.lib;ole32.lib;shell32.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Configuration)\pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Configuration)\pgAdmin3.pdb</ProgramDatabaseFile>
@@ -458,7 +458,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswud/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;WXUSINGDLL;DEBUG=1;__WXDEBUG__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;wxUSE_UNICODE=1;UNICODE;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -483,7 +483,7 @@
       <AdditionalDependencies>wxbase30ud.lib;wxbase30ud_xml.lib;wxbase30ud_net.lib;wxmsw30ud_adv.lib;wxmsw30ud_core.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxregexud.lib;wxpngd.lib;wxzlibd.lib;wxjpegd.lib;wxtiffd.lib;wxmsw30ud_stc.lib;wxmsw30ud_xrc.lib;wxexpatd.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;oleaut32.lib;ole32.lib;shell32.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/pgAdmin3.pdb</ProgramDatabaseFile>
@@ -518,7 +518,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(WXWIN)/lib/vc_dll/mswu/;$(WXWIN)/include;$(OPENSSL)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswu/;$(WXWIN)/include;$(OPENSSL)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;NDEBUG;WIN32;_WINDOWS;__WINDOWS__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;__WXMSW__;WXUSINGDLL;wxUSE_UNICODE=1;UNICODE;EMBED_XRC;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -543,7 +543,7 @@
       <AdditionalDependencies>wxbase30u.lib;wxbase30u_xml.lib;wxbase30u_net.lib;wxmsw30u_adv.lib;wxmsw30u_core.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxregexu.lib;wxpng.lib;wxzlib.lib;wxjpeg.lib;wxtiff.lib;wxmsw30u_stc.lib;wxmsw30u_xrc.lib;wxexpat.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Configuration)\pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Configuration)\pgAdmin3.pdb</ProgramDatabaseFile>
@@ -573,7 +573,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc_dll/mswu/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENSSL)/include;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll/mswu/;$(WXWIN)/include;$(WXWIN)/contrib/include;$(PGDIR)/include;$(PGBUILD)/include/;$(PGBUILD)/libxml2/include/;$(PGBUILD)/libxslt/include/;$(PGBUILD)/iconv/include/;$(PROJECTDIR)/include;$(PGDIR)/include/server;$(PROJECTDIR)/include/libssh2;$(PROJECTDIR)/include/libssh2/Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;HAVE_OPENSSL_CRYPTO;LIBSSH2_OPENSSL;NDEBUG;WIN32;_WINDOWS;__WINDOWS__;__WIN95__;__WIN32__;WINVER=0x0400;STRICT;__WXMSW__;WXUSINGDLL;wxUSE_UNICODE=1;UNICODE;EMBED_XRC;PG_SSL;HAVE_CONNINFO_PARSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -598,7 +598,7 @@
       <AdditionalDependencies>wxbase30u.lib;wxbase30u_xml.lib;wxbase30u_net.lib;wxmsw30u_adv.lib;wxmsw30u_core.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxregexu.lib;wxpng.lib;wxzlib.lib;wxjpeg.lib;wxtiff.lib;wxmsw30u_stc.lib;wxmsw30u_xrc.lib;wxexpat.lib;libeay32MD.lib;libpq.lib;libxml2.lib;libxslt.lib;iconv.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/pgAdmin3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENSSL)/lib/VC;$(WXWIN)/lib/vc$(PlatformToolsetVersion)_dll;$(PGDIR)/lib;$(PGBUILD)/lib;$(PGBUILD)/libxml2/lib;$(PGBUILD)/libxslt/lib;$(PGBUILD)/iconv/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Release/pgAdmin3.pdb</ProgramDatabaseFile>
