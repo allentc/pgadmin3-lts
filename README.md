@@ -49,11 +49,11 @@ If you are too lazy to read [INSTALL](./INSTALL) instructions, then try this for
 ```
 # apt-get install libwxgtk3.0-dev wx3.0-headers wxgtk3.0 wx3.0
 
-# apt-get install postgresql-13 postgresql-contrib-13 postgresql-client-13 libjson-perl libpq-dev
-# systemctl restart postgresql
+# apt-get install libjson-perl libpq-dev #postgresql-13 postgresql-contrib-13 postgresql-client-13
+# systemctl restart postgresql || true
 
 $ bash bootstrap
-$ ./configure --prefix=/opt/pgadmin3bigsql --with-pgsql=/usr/lib/postgresql/13 --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC
+$ ./configure --prefix=/opt/pgadmin3bigsql --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC #--with-pgsql=/usr/lib/postgresql/13
 $ make -j8
 $ sudo make install
 ```
