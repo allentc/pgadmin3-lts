@@ -322,6 +322,7 @@
                             <File Id="postgresql_exes.pg_dump.exe" Name="pg_dump.exe" DiskId="1" Source="$(var.PGDIR)/bin/pg_dump.exe" />
                             <File Id="postgresql_exes.pg_dumpall.exe" Name="pg_dumpall.exe" DiskId="1" Source="$(var.PGDIR)/bin/pg_dumpall.exe" />
                             <File Id="postgresql_exes.pg_restore.exe" Name="pg_restore.exe" DiskId="1" Source="$(var.PGDIR)/bin/pg_restore.exe" />
+                            <File Id="postgresql_exes.zlib1.dll" Name="zlib1.dll" DiskId="1" Source="$(var.PGDIR)/bin/zlib1.dll" />
                         </Component>
 
                         <Directory Id="i18nDir" Name="i18n">
