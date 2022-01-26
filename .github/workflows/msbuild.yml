@@ -6,14 +6,14 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
 
-  # Configuration type to build.
-  # You can convert this to a build matrix if you need coverage of multiple configuration types.
-  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-  BUILD_CONFIGURATION: Debug
-
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
+
+    strategy:
+      fail-fast: false
+      matrix:
+        build_conf: [Release, Debug]
 
     steps:
     - uses: actions/checkout@v2
@@ -27,12 +27,26 @@ jobs:
         echo WXWIN=%GITHUB_WORKSPACE%\wxWidgets>> %GITHUB_ENV%
         echo PGDIR=%GITHUB_WORKSPACE%\postgres-binaries\pgsql>> %GITHUB_ENV%
 
+    - name: Install sphinx
+      if: ${{ matrix.build_conf == 'Release' }}
+      shell: cmd
+      run: pip install Sphinx
+
     - name: Download and unpack wxWidgets headers
+      if: ${{ matrix.build_conf != 'Release' }}
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: pwsh
       run: |
         Invoke-WebRequest -Uri "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5-headers.7z" -OutFile wxWidgets-headers.7z
         7z.exe x wxWidgets-headers.7z -o${{env.WXWIN}}
+
+    - name: Download and unpack wxWidgets source
+      if: ${{ matrix.build_conf == 'Release' }}
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5.7z" -OutFile wxWidgets-source.7z
+        7z.exe x wxWidgets-source.7z -o${{env.WXWIN}}
 
     - name: Download and unpack wxWidgets developer files
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -41,6 +55,14 @@ jobs:
         Invoke-WebRequest -Uri "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxMSW-3.0.5_vc142_Dev.7z" -OutFile wxWidgets-devel.7z
         7z.exe x wxWidgets-devel.7z -o${{env.WXWIN}}
 
+    - name: Download and unpack wxWidgets release libraries
+      if: ${{ matrix.build_conf == 'Release' }}
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxMSW-3.0.5_vc142_ReleaseDLL.7z" -OutFile wxWidgets-libraries.7z
+        7z.exe x wxWidgets-libraries.7z -o${{env.WXWIN}}
+
     - name: Download and unpack PostgreSQL
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: pwsh
@@ -48,8 +70,23 @@ jobs:
         Invoke-WebRequest -Uri "https://get.enterprisedb.com/postgresql/postgresql-9.2.24-1-windows-binaries.zip?ls=Crossover&type=Crossover" -OutFile postgres-binaries.zip
         7z.exe x postgres-binaries.zip -o${{env.PGDIR}}\..
 
+    - name: Set up Visual Studio shell
+      if: ${{ matrix.build_conf == 'Release' }}
+      uses: egor-tensin/vs-shell@v2
+      with:
+        arch: x86
+
+    - name: Build hhp2cached
+      if: ${{ matrix.build_conf == 'Release' }}
+      working-directory: ${{env.WXWIN}}\utils\hhp2cached
+      shell: cmd
+      run: |
+        echo SHARED = 1 >> ..\..\build\msw\config.vc
+        echo BUILD = release>> ..\..\build\msw\config.vc
+        nmake -f makefile.vc COMPILER_VERSION=142
+
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Configuration=${{matrix.build_conf}} ${{env.SOLUTION_FILE_PATH}}
