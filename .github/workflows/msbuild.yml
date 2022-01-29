@@ -26,11 +26,19 @@ jobs:
       run: |
         echo WXWIN=%GITHUB_WORKSPACE%\wxWidgets>> %GITHUB_ENV%
         echo PGDIR=%GITHUB_WORKSPACE%\postgres-binaries\pgsql>> %GITHUB_ENV%
+        echo LIBSSH2DIR=%GITHUB_WORKSPACE%\libssh2-dll>> %GITHUB_ENV%
 
     - name: Install sphinx
       if: ${{ matrix.build_conf == 'Release' }}
       shell: cmd
       run: pip install Sphinx
+
+    - name: Download and unpack libssh2 source
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/libssh2/libssh2/archive/refs/tags/libssh2-1.10.0.zip" -OutFile libssh2.zip
+        7z.exe x libssh2.zip -o${{env.LIBSSH2DIR}}\..
 
     - name: Download and unpack wxWidgets headers
       if: ${{ matrix.build_conf != 'Release' }}
@@ -75,6 +83,14 @@ jobs:
       uses: egor-tensin/vs-shell@v2
       with:
         arch: x86
+
+    - name: Build libssh2
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: cmd
+      run: |
+        md libssh2-build && cd libssh2-build
+        cmake -DCRYPTO_BACKEND=WinCNG -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=%LIBSSH2DIR% -DCMAKE_BUILD_TYPE=Release -A Win32 ..\libssh2-libssh2-1.10.0
+        cmake --build . --target install
 
     - name: Build hhp2cached
       if: ${{ matrix.build_conf == 'Release' }}
