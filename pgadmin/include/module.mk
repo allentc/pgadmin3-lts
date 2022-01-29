@@ -36,5 +36,4 @@ include include/gqb/module.mk
 include include/hotdraw/module.mk
 include include/utils/module.mk
 include include/ogl/module.mk
-include include/libssh2/module.mk
 

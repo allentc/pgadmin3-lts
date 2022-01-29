@@ -36,6 +36,7 @@
                             <File Id="core_libs.libxml2.dll" Name="libxml2.dll" DiskId="1" Source="$(var.PGDIR)/bin/libxml2.dll" />
                             <File Id="core_libs.libxslt.dll" Name="libxslt.dll" DiskId="1" Source="$(var.PGDIR)/bin/libxslt.dll" />
                             <File Id="core_libs.ssleay32.dll" Name="ssleay32.dll" DiskId="1" Source="$(var.PGDIR)/bin/ssleay32.dll" />
+                            <File Id="core_libs.libssh2.dll" Name="libssh2.dll" DiskId="1" Source="$(var.LIBSSH2DIR)/bin/libssh2.dll" />
                             <File Id="core_libs.wxbase30u_net_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxbase30u_net_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxbase30u_net_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />
                             <File Id="core_libs.wxbase30u_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxbase30u_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxbase30u_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />
                             <File Id="core_libs.wxbase30u_xml_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxbase30u_xml_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxbase30u_xml_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />

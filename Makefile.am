@@ -88,7 +88,7 @@ endif
 # * -z2 - Unix style line endings
 # Also add the -n to make it not save .orig files (we have git for that)
 style:
-	astyle -n -p --style=allman -S -t4 -k3 -z2 `find . -name "*.cpp" -o -name "*.h" | egrep -v "(wx-build|xrcDialogs|pgadmin/libssh2|pgadmin/include/libssh2)"`
+	astyle -n -p --style=allman -S -t4 -k3 -z2 `find . -name "*.cpp" -o -name "*.h" | egrep -v "(wx-build|xrcDialogs)"`
 
 # Create HTML docs
 doc:
