@@ -1,0 +1,34 @@
+name: Ubuntu build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        build_conf: [Release, Debug]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Update package lists
+      run: sudo apt-get update
+
+    - name: Install libraries
+      run: sudo apt-get install libwxgtk3.0-gtk3-dev libpq-dev libxml2-dev libxslt1-dev libssh2-1-dev python3-sphinx
+
+    - name: Run bootstrap
+      run: ./bootstrap
+
+    - name: Run configure
+      env:
+        ENABLE_DEBUG: "${{ matrix.build_conf == 'Debug' && 'yes' || 'no' }}"
+      run: ./configure --with-wx-version=3.0 --enable-databasedesigner --enable-debug=${{ env.ENABLE_DEBUG }}
+
+    - name: Run make
+      run: | 
+        make -j4 all
+        sudo make install
