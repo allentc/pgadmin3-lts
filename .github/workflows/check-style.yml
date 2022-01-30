@@ -1,0 +1,22 @@
+name: Check style
+
+on: [push, pull_request]
+
+jobs:
+  check-style:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Update package lists
+      run: sudo apt-get update
+
+    - name: Install astyle
+      run: sudo apt-get install astyle
+
+    - name: Run astyle
+      run: ./enforce-style.sh | egrep -v "^Unchanged  " || true
+
+    - name: Check for style violations
+      run: git diff --exit-code
