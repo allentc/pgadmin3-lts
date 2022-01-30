@@ -17,7 +17,7 @@
 class ddRemoveTableButtonHandle : public hdButtonHandle
 {
 public:
-	ddRemoveTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size);
+	ddRemoveTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size);
 	~ddRemoveTableButtonHandle();
 
 	virtual void invokeStart(hdMouseEvent &event, hdDrawingView *view);

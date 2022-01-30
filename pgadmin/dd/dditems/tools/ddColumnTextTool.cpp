@@ -25,7 +25,7 @@
 class hdDrawingEditor;
 
 
-ddColumnTextTool::ddColumnTextTool(hdDrawingView *view, hdIFigure *fig, hdITool *dt, bool fastEdit , wxString dialogCaption, wxString dialogMessage):
+ddColumnTextTool::ddColumnTextTool(hdDrawingView *view, hdIFigure *fig, hdITool *dt, bool fastEdit, wxString dialogCaption, wxString dialogMessage):
 	hdSimpleTextTool(view, fig, dt, fastEdit, dialogCaption, dialogMessage)
 {
 	if(colTextFigure->ms_classInfo.IsKindOf(&ddTextTableItemFigure::ms_classInfo))

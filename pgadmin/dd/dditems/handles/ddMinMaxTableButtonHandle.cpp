@@ -23,7 +23,7 @@
 //Images
 #include "images/ddMinMaxCursor.pngc"
 
-ddMinMaxTableButtonHandle::ddMinMaxTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxBitmap &buttonSecondImage, wxSize &size):
+ddMinMaxTableButtonHandle::ddMinMaxTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxBitmap &buttonSecondImage, wxSize &size):
 	hdButtonHandle(owner, buttonLocator, buttonImage, size)
 {
 	buttonMaximizeImage = buttonSecondImage;

@@ -2140,7 +2140,7 @@ void sqlGridBoolEditor::BeginEdit(int row, int col, wxGrid *grid)
 				grid->GetTable()->SetValue(row, col, wxEmptyString);\
 				break;\
 }\
- 
+
 #if wxCHECK_VERSION(2, 9, 0)
 // pure virtual in 2.9+, doesn't exist in prior versions
 void sqlGridBoolEditor::ApplyEdit(int row, int col, wxGrid *grid)
@@ -2327,7 +2327,7 @@ sqlTable::sqlTable(pgConn *conn, pgQueryThread *_thread, const wxString &tabName
 	/*ABDUL:BEGIN*/
 	/*pgSet *colSet = connection->ExecuteSet(
 	                    wxT("SELECT n.nspname AS nspname, relname, format_type(t.oid,NULL) AS typname, format_type(t.oid, att.atttypmod) AS displaytypname, ")
-	                    wxT("nt.nspname AS typnspname, attname, attnum, COALESCE(b.oid, t.oid) AS basetype, atthasdef, adsrc,\n")						
+	                    wxT("nt.nspname AS typnspname, attname, attnum, COALESCE(b.oid, t.oid) AS basetype, atthasdef, adsrc,\n")
 	                    wxT("       CASE WHEN t.typbasetype::oid=0 THEN att.atttypmod else t.typtypmod END AS typmod,\n")
 	                    wxT("       CASE WHEN t.typbasetype::oid=0 THEN att.attlen else t.typlen END AS typlen\n")
 	                    wxT("  FROM pg_attribute att\n")
@@ -2338,10 +2338,11 @@ sqlTable::sqlTable(pgConn *conn, pgQueryThread *_thread, const wxString &tabName
 	                    wxT("  LEFT OUTER JOIN pg_type b ON b.oid=t.typbasetype\n")
 	                    wxT("  LEFT OUTER JOIN pg_attrdef def ON adrelid=attrelid AND adnum=attnum\n")
 	                    wxT(" WHERE attnum > 0 AND NOT attisdropped AND attrelid=") + NumToStr(relid) + wxT("::oid\n")
-	                    wxT(" ORDER BY attnum"));*/	
+	                    wxT(" ORDER BY attnum"));*/
 	wxString query = wxT("SELECT n.nspname AS nspname, relname, format_type(t.oid,NULL) AS typname, format_type(t.oid, att.atttypmod) AS displaytypname, ")
-		wxT("nt.nspname AS typnspname, attname, attnum, COALESCE(b.oid, t.oid) AS basetype, atthasdef, ");//, adsrc,\n");
-	if( connection->BackendMinimumVersion(12, 0) ) {
+	                 wxT("nt.nspname AS typnspname, attname, attnum, COALESCE(b.oid, t.oid) AS basetype, atthasdef, ");//, adsrc,\n");
+	if( connection->BackendMinimumVersion(12, 0) )
+	{
 		query += wxT("pg_catalog.pg_get_expr(def.adbin, def.adrelid) AS adsrc,\n");
 	}
 	else
@@ -2358,7 +2359,7 @@ sqlTable::sqlTable(pgConn *conn, pgQueryThread *_thread, const wxString &tabName
 	         wxT("  LEFT OUTER JOIN pg_type b ON b.oid=t.typbasetype\n")
 	         wxT("  LEFT OUTER JOIN pg_attrdef def ON adrelid=attrelid AND adnum=attnum\n")
 	         wxT(" WHERE attnum > 0 AND NOT attisdropped AND attrelid=") + NumToStr(relid) + wxT("::oid\n")
-	         wxT(" ORDER BY attnum");		
+	         wxT(" ORDER BY attnum");
 	pgSet *colSet = connection->ExecuteSet(query);
 	/*ABDUL:END*/
 
@@ -2407,7 +2408,7 @@ sqlTable::sqlTable(pgConn *conn, pgQueryThread *_thread, const wxString &tabName
 			columns[i].typlen = colSet->GetLong(wxT("typlen"));
 			columns[i].typmod = colSet->GetLong(wxT("typmod"));
 
-//ABDUL:7 Sep 2020:BEGIN			
+//ABDUL:7 Sep 2020:BEGIN
 			//switch (columns[i].type)
 			long int coltype = (long int)columns[i].type;
 			switch (coltype)

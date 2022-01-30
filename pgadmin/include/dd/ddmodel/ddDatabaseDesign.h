@@ -29,7 +29,7 @@ enum
 	DDGENNOTHING
 };
 
-WX_DECLARE_STRING_HASH_MAP( wxString , tablesMappingHashMap );
+WX_DECLARE_STRING_HASH_MAP( wxString, tablesMappingHashMap );
 
 class ddDatabaseDesign : public wxObject
 {

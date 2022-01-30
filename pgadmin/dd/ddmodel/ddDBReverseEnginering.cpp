@@ -1815,7 +1815,7 @@ SelTablesPage::SelTablesPage(wxWizard *parent, wxWizardPage *prev)
 	m_allTables = new wxListBox( this, DDALLTABS, wxDefaultPosition, wxDefaultSize, 0, NULL, wxLB_EXTENDED | wxLB_ALWAYS_SB | wxLB_SORT);
 	mainSizer->AddGrowableRow(1);
 	mainSizer->AddGrowableCol(0);
-	mainSizer->Add(m_allTables , 1, wxEXPAND);
+	mainSizer->Add(m_allTables, 1, wxEXPAND);
 
 	addBitmap = *gqbOrderAdd_png_bmp;
 	addAllBitmap = *gqbOrderAddAll_png_bmp;
@@ -1865,7 +1865,7 @@ SelTablesPage::SelTablesPage(wxWizard *parent, wxWizardPage *prev)
 	//right listbox with selected tables from schema to be imported.
 	m_selTables = new wxListBox( this, DDSELTABS, wxDefaultPosition, wxDefaultSize, 0, NULL, wxLB_EXTENDED | wxLB_ALWAYS_SB | wxLB_SORT);
 	mainSizer->AddGrowableCol(2);
-	mainSizer->Add(m_selTables , 1, wxEXPAND);
+	mainSizer->Add(m_selTables, 1, wxEXPAND);
 	mainSizer->Fit(this);
 }
 
@@ -2058,7 +2058,7 @@ ReportPage::ReportPage(wxWizard *parent, wxWizardPage *prev)
 	this->SetSizer(topSizer);
 
 	//Add a message
-	results = new wxTextCtrl(this, wxID_ANY , wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_LEFT
+	results = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_LEFT
 	                        );
 	topSizer->Add(results, 1, wxEXPAND);
 	topSizer->Fit(this);

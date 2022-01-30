@@ -160,7 +160,7 @@ SelGenTablesPage::SelGenTablesPage(wxWizard *parent, wxWizardPage *prev)
 	m_allTables = new wxListBox( this, DDALLTABS, wxDefaultPosition, wxDefaultSize, 0, NULL, wxLB_EXTENDED | wxLB_ALWAYS_SB | wxLB_SORT);
 	mainSizer->AddGrowableRow(1);
 	mainSizer->AddGrowableCol(0);
-	mainSizer->Add(m_allTables , 1, wxEXPAND);
+	mainSizer->Add(m_allTables, 1, wxEXPAND);
 
 	addBitmap = *gqbOrderAdd_png_bmp;
 	addAllBitmap = *gqbOrderAddAll_png_bmp;
@@ -210,7 +210,7 @@ SelGenTablesPage::SelGenTablesPage(wxWizard *parent, wxWizardPage *prev)
 	//right listbox with selected tables from schema to be imported.
 	m_selTables = new wxListBox( this, DDSELTABS, wxDefaultPosition, wxDefaultSize, 0, NULL, wxLB_EXTENDED | wxLB_ALWAYS_SB | wxLB_SORT);
 	mainSizer->AddGrowableCol(2);
-	mainSizer->Add(m_selTables , 1, wxEXPAND);
+	mainSizer->Add(m_selTables, 1, wxEXPAND);
 	mainSizer->Fit(this);
 }
 
@@ -548,7 +548,7 @@ void ReportGridPage::populateGrid()
 	reportGrid->ClearGrid();
 	if(reportGrid->GetNumberRows() > 0)
 		reportGrid->DeleteRows(0, reportGrid->GetNumberRows());
-	int row , max = wparent->page2->countSelTables();
+	int row, max = wparent->page2->countSelTables();
 	reportGrid->InsertRows(0, max);
 	reportGrid->SetColLabelValue(0, _("Tables"));
 	reportGrid->SetColLabelValue(1, _("Select an action"));

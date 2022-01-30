@@ -27,7 +27,7 @@
 //Images
 #include "images/ddDeleteTableCursor.pngc"
 
-ddRemoveTableButtonHandle::ddRemoveTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size):
+ddRemoveTableButtonHandle::ddRemoveTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size):
 	hdButtonHandle(owner, buttonLocator, buttonImage, size)
 {
 }

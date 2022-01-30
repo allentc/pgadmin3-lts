@@ -145,7 +145,7 @@ void gqbDatabase::createSchemas(gqbBrowser *tablesBrowser, wxTreeItemId parentNo
 				// Create Schema Object
 				// Note that the schema will be populated when the node is expanded.
 				schema = new gqbSchema(this, name, conn, schemas->GetOid(wxT("oid")));
-				parent = tablesBrowser->AppendItem(parentNode, name , indexImage, indexImage, schema);
+				parent = tablesBrowser->AppendItem(parentNode, name, indexImage, indexImage, schema);
 				schema->createObjects(tablesBrowser, schema->getOid(), parent, GQB_IMG_TABLE, GQB_IMG_VIEW, GQB_IMG_EXTTABLE);
 			}
 

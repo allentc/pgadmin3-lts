@@ -26,7 +26,7 @@
 //Images
 #include "images/ddRelationshipCursor.pngc"
 
-ddAddFkButtonHandle::ddAddFkButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size):
+ddAddFkButtonHandle::ddAddFkButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size):
 	hdButtonHandle(owner, buttonLocator, buttonImage, size)
 {
 }

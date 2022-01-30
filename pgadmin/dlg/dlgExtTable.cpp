@@ -114,7 +114,7 @@ void dlgExtTable::CheckChange()
 		bool enable = true;
 
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-		CheckValid(enable, txtSqlBox->GetText().Length() > 0 , _("Please enter external table definition."));
+		CheckValid(enable, txtSqlBox->GetText().Length() > 0, _("Please enter external table definition."));
 
 		EnableOK(enable);
 	}

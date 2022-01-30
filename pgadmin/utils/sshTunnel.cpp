@@ -59,7 +59,7 @@ CSSHTunnelThread::CSSHTunnelThread(const wxString tunnelhost, const wxString rem
 	m_listensock = -1, m_sock = -1;
 	m_session = NULL;
 
-	memset(m_keyboard_interactive_pwd, 0 , strlen(m_keyboard_interactive_pwd));
+	memset(m_keyboard_interactive_pwd, 0, strlen(m_keyboard_interactive_pwd));
 	strncpy(m_keyboard_interactive_pwd, (const char *)password.mb_str(wxConvUTF8), password.Length());
 }
 
@@ -218,7 +218,7 @@ bool CSSHTunnelThread::Initialize()
 		if(resolveDNS("localhost", arrLocalIP))
 		{
 			m_listensock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-			memset(&m_sin, 0 , sizeof(m_sin));
+			memset(&m_sin, 0, sizeof(m_sin));
 			m_sin.sin_family = AF_INET;
 
 			// Give port no to 0 so that bind will automatically select the available port.

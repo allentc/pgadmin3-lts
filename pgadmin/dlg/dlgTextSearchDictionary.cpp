@@ -163,7 +163,7 @@ void dlgTextSearchDictionary::CheckChange()
 		wxString name = GetName();
 		bool enable = true;
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-		CheckValid(enable, cbTemplate->GetValue().Length() > 0 , _("Please select a template."));
+		CheckValid(enable, cbTemplate->GetValue().Length() > 0, _("Please select a template."));
 
 		EnableOK(enable);
 	}

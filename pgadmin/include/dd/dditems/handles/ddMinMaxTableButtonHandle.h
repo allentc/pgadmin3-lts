@@ -17,7 +17,7 @@
 class ddMinMaxTableButtonHandle : public hdButtonHandle
 {
 public:
-	ddMinMaxTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxBitmap &buttonSecondImage, wxSize &size);
+	ddMinMaxTableButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxBitmap &buttonSecondImage, wxSize &size);
 	~ddMinMaxTableButtonHandle();
 
 	virtual void invokeStart(hdMouseEvent &event, hdDrawingView *view);

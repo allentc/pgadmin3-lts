@@ -650,7 +650,7 @@ void pgServer::StorePassword()
 		if (!passwd.IsEmpty())
 		{
 			passwd.Replace(wxT("\\"), wxT("\\\\"));
-			passwd.Replace(wxT(":") , wxT("\\:"));
+			passwd.Replace(wxT(":"), wxT("\\:"));
 		}
 
 		file.Read(before);
@@ -874,8 +874,8 @@ int pgServer::Connect(frmMain *form, bool askPassword, const wxString &pwd, bool
 		}
 		else
 		{
-                  if (!(conn->BackendMinimumVersion(SERVER_MIN_VERSION_N >> 8, SERVER_MIN_VERSION_N & 0x00FF)) ||
-                       (conn->BackendMinimumVersion(SERVER_MAX_VERSION_N >> 8, (SERVER_MAX_VERSION_N & 0x00FF) + 1)))
+			if (!(conn->BackendMinimumVersion(SERVER_MIN_VERSION_N >> 8, SERVER_MIN_VERSION_N & 0x00FF)) ||
+			        (conn->BackendMinimumVersion(SERVER_MAX_VERSION_N >> 8, (SERVER_MAX_VERSION_N & 0x00FF) + 1)))
 			{
 				wxLogWarning(_("The server you are connecting to is not a version that is supported by this release of %s.\n\n%s may not function as expected.\n\nSupported server versions are %s to %s."),
 				             appearanceFactory->GetLongAppName().c_str(),

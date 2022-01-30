@@ -618,7 +618,7 @@ frmQuery::frmQuery(frmMain *form, const wxString &_title, pgConn *_conn, const w
 
 	// Create the SQL box. After this, sqlQuery variable can be used.
 	SqlBookAddPage();
-	
+
 	if (!file.IsEmpty() && wxFileName::FileExists(file))
 	{
 		wxFileName fn = file;
@@ -1780,18 +1780,22 @@ void frmQuery::OnChangeStc(wxStyledTextEvent &event)
 #if wxCHECK_VERSION(3, 0, 0)
 void frmQuery::OnPositionStc(wxStyledTextEvent &event)
 {
-	wxObject *wo = event.GetEventObject(); 
-	if(sqlQuery==wo) {
+	wxObject *wo = event.GetEventObject();
+	if(sqlQuery == wo)
+	{
 		//after void ctlSQLBox::OnPositionStc(wxStyledTextEvent &event)
 		//frmQuery::OnPositionStcDo should be called asynchronously
 		//or crash otherwise
 		CallAfter(&frmQuery::OnPositionStcDo);
-	} else {
+	}
+	else
+	{
 		OnPositionStcDo();
 	}
 }
 
-void frmQuery::OnPositionStcDo() {
+void frmQuery::OnPositionStcDo()
+{
 	int selFrom, selTo, selCount;
 	sqlQuery->GetSelection(&selFrom, &selTo);
 	selCount = selTo - selFrom;
@@ -2708,7 +2712,7 @@ bool frmQuery::isBeginNotRequired(wxString query)
 	if ((wordlen == 4 && keyword.CmpNoCase(wxT("drop")) == 0) ||
 	        (wordlen == 7 && keyword.CmpNoCase(wxT("reindex")) == 0))
 	{
-		query = query.SubString(wordlen , queryLen - 1);
+		query = query.SubString(wordlen, queryLen - 1);
 		query = query.Trim(false);
 		queryLen = query.Len();
 		wordlen = 0;
@@ -3691,8 +3695,8 @@ void frmQuery::SqlBookAddPage()
 	box->Connect(wxID_ANY, wxEVT_KILL_FOCUS, wxFocusEventHandler(frmQuery::OnFocus));
 
 	sqlQueryCounter ++;
-	caption = wxString::Format(_("Query %ld"), sqlQueryCounter);	
-	
+	caption = wxString::Format(_("Query %ld"), sqlQueryCounter);
+
 	box->SetTitle(caption);
 	sqlQueryBook->AddPage(box, caption, true);
 

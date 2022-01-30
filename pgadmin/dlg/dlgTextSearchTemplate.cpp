@@ -142,7 +142,7 @@ void dlgTextSearchTemplate::CheckChange()
 		wxString name = GetName();
 		bool enable = true;
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-		CheckValid(enable, cbLexize->GetGuessedSelection() > 0 , _("Please select a lexize function."));
+		CheckValid(enable, cbLexize->GetGuessedSelection() > 0, _("Please select a lexize function."));
 
 		EnableOK(enable);
 	}

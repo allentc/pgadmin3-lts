@@ -83,7 +83,7 @@ gqbGridPanel::gqbGridPanel(wxWindow *parent, wxWindowID id = wxID_ANY, gqbGridPr
 	buttonDownBottom = new wxBitmapButton( this, GQB_COLS_DOWN_BOTTOM_BUTTON_ID,  downBottomBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW, wxDefaultValidator, wxT("Bottom") );
 	buttonDownBottom->SetToolTip(_("Move the selected column to the bottom"));
 
-	this->colsGrid = new wxGrid(this, -1, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_BESTWRAP , wxT(""));
+	this->colsGrid = new wxGrid(this, -1, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_BESTWRAP, wxT(""));
 	colsGrid->SetTable(gModel, true, wxGrid::wxGridSelectCells);
 
 	// Adjust the default row height to be more compact
@@ -461,17 +461,17 @@ void gqbColsTree::refreshTree(gqbModel *model, gqbQueryObject *doNotInclude)
 
 		if(tmpTable->getAlias().length() > 0)
 		{
-			parent = this->AppendItem(rootNode, tmpTable->getAlias() , iconIndex, iconIndex, tmpTable);
+			parent = this->AppendItem(rootNode, tmpTable->getAlias(), iconIndex, iconIndex, tmpTable);
 		}
 		else
 		{
-			parent = this->AppendItem(rootNode, tmpTable->getName() , iconIndex, iconIndex, tmpTable);
+			parent = this->AppendItem(rootNode, tmpTable->getName(), iconIndex, iconIndex, tmpTable);
 		}
 		gqbIteratorBase *colsIterator = tmpTable->parent->createColumnsIterator();
 		while(colsIterator->HasNext())
 		{
 			gqbColumn *tmpColumn = (gqbColumn *)colsIterator->Next();
-			this->AppendItem(parent, tmpColumn->getName() , 2, 2, tmpColumn);
+			this->AppendItem(parent, tmpColumn->getName(), 2, 2, tmpColumn);
 		}
 		delete colsIterator;
 	}
@@ -503,7 +503,7 @@ gqbColsPopUp::gqbColsPopUp(wxWindow *parent, wxWindowID id, wxString title, wxPo
 
 	hSizer->Add(editTree, 1, wxEXPAND | wxRIGHT, 3);
 
-	buttonTree = new wxButton(this, QR_TREE_OK, _("OK") , wxPoint(199, 5), wxDefaultSize, wxBU_EXACTFIT);
+	buttonTree = new wxButton(this, QR_TREE_OK, _("OK"), wxPoint(199, 5), wxDefaultSize, wxBU_EXACTFIT);
 	this->Connect(QR_TREE_OK, wxEVT_COMMAND_BUTTON_CLICKED, (wxObjectEventFunction) (wxEventFunction) (wxCommandEventFunction) &gqbColsPopUp::OnPopUpOKClick);
 
 	hSizer->Add(buttonTree);
@@ -897,7 +897,7 @@ gqbOrderPanel::gqbOrderPanel(wxWindow *parent, gqbGridOrderTable *gridTableLeft,
 	buttonDownBottom = new wxBitmapButton( this, GQB_ORDER_DOWN_BOTTOM_BUTTON_ID,  downBottomBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW, wxDefaultValidator, wxT("Bottom") );
 	buttonDownBottom->SetToolTip(_("Move the selected column to the bottom"));
 
-	availableColumns = new wxGrid(this, -1, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_BESTWRAP , wxT("Available Columns"));
+	availableColumns = new wxGrid(this, -1, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_BESTWRAP, wxT("Available Columns"));
 	availableColumns->SetTable(gridTableLeft);
 	availableColumns->EnableEditing(false);
 
@@ -955,7 +955,7 @@ gqbOrderPanel::gqbOrderPanel(wxWindow *parent, gqbGridOrderTable *gridTableLeft,
 	    wxALIGN_CENTER );                         // no border and centre horizontally
 
 	// GQB-TODO: change 333 for a new and better one.
-	usedColumns = new wxGrid(this, 333, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_BESTWRAP , wxT("Columns Order"));
+	usedColumns = new wxGrid(this, 333, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY | wxTE_BESTWRAP, wxT("Columns Order"));
 	usedColumns->SetTable(gridTableRight);
 	usedColumns->EnableEditing(false);
 

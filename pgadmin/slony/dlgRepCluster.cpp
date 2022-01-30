@@ -1422,9 +1422,10 @@ wxString dlgRepClusterUpgrade::GetSql()
 			                       wxT(" WHERE n.nspname = ") + qtDbString(wxT("_") + cluster->GetName()) +
 			                       wxT("   AND attnum>0 and relkind='r'\n")
 			                       wxT(" ORDER BY (relname != 'sl_confirm'), relname, attname")
-			                      );*/						
+			                      );*/
 			wxString sql;
-			if( remoteConn->BackendMinimumVersion(12, 0) ) {
+			if( remoteConn->BackendMinimumVersion(12, 0) )
+			{
 				sql = wxT("SELECT relname, attname, attndims, atttypmod, attnotnull, pg_catalog.pg_get_expr(d.adbin, d.adrelid) AS adsrc, ty.typname, tn.nspname as typnspname,\n");
 			}
 			else
@@ -1440,10 +1441,11 @@ wxString dlgRepClusterUpgrade::GetSql()
 			       wxT("  JOIN pg_namespace tn ON tn.oid=ty.typnamespace\n")
 			       wxT(" WHERE n.nspname = ") + qtDbString(remoteCluster) +
 			       wxT("   AND attnum>0 and relkind='r'\n")
-			       wxT(" ORDER BY (relname != 'sl_confirm'), relname, attname");						
+			       wxT(" ORDER BY (relname != 'sl_confirm'), relname, attname");
 			pgSetIterator srcCols(remoteConn, sql);
-			
-			if( remoteConn->BackendMinimumVersion(12, 0) ) {
+
+			if( remoteConn->BackendMinimumVersion(12, 0) )
+			{
 				sql = wxT("SELECT relname, attname, pg_catalog.pg_get_expr(d.adbin, d.adrelid) AS adsrc\n");
 			}
 			else

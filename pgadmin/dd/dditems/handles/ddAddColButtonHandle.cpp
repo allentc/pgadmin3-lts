@@ -23,7 +23,7 @@
 //Images
 #include "images/ddAddColumnCursor.pngc"
 
-ddAddColButtonHandle::ddAddColButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size):
+ddAddColButtonHandle::ddAddColButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size):
 	hdButtonHandle(owner, buttonLocator, buttonImage, size)
 {
 }
@@ -54,7 +54,7 @@ void ddAddColButtonHandle::invokeStart(hdMouseEvent &event, hdDrawingView *view)
 				wxString msg(wxT("Error trying to add new column '"));
 				msg.Append(name);
 				msg.Append(wxT("' column name already in use"));
-				wxMessageDialog info( view, msg ,
+				wxMessageDialog info( view, msg,
 				                      wxT("Column name already in use"),
 				                      wxNO_DEFAULT | wxOK | wxICON_EXCLAMATION);
 				again = true;

@@ -172,10 +172,10 @@ bool hdMultiPosRect::Intersects(int posIdx, const hdMultiPosRect &rect) const
 
 void hdMultiPosRect::add (int posIdx, int newX, int newY)
 {
-	int x1 = hdGeometry::min(x[posIdx] , newX);
-	int x2 = hdGeometry::max(x[posIdx] + width , newX);
-	int y1 = hdGeometry::min(y[posIdx] , newY);
-	int y2 = hdGeometry::max(y[posIdx] + height , newY);
+	int x1 = hdGeometry::min(x[posIdx], newX);
+	int x2 = hdGeometry::max(x[posIdx] + width, newX);
+	int y1 = hdGeometry::min(y[posIdx], newY);
+	int y2 = hdGeometry::max(y[posIdx] + height, newY);
 
 	SetX(posIdx, x1);
 	SetWidth(x2 - x1);
@@ -186,14 +186,14 @@ void hdMultiPosRect::add (int posIdx, int newX, int newY)
 
 void hdMultiPosRect::add (int posIdx, hdRect *newRect)
 {
-	add(posIdx, newRect->GetTopLeft().x , newRect->GetTopLeft().y);
-	add(posIdx, newRect->GetBottomRight().x , newRect->GetBottomRight().y);
+	add(posIdx, newRect->GetTopLeft().x, newRect->GetTopLeft().y);
+	add(posIdx, newRect->GetBottomRight().x, newRect->GetBottomRight().y);
 }
 
 void hdMultiPosRect::add (int posIdx, hdRect newRect)
 {
-	add(posIdx, newRect.GetTopLeft().x , newRect.GetTopLeft().y);
-	add(posIdx, newRect.GetBottomRight().x , newRect.GetBottomRight().y);
+	add(posIdx, newRect.GetTopLeft().x, newRect.GetTopLeft().y);
+	add(posIdx, newRect.GetBottomRight().x, newRect.GetBottomRight().y);
 }
 
 void hdMultiPosRect::add(int posIdx, hdPoint *p)
@@ -205,7 +205,7 @@ void hdMultiPosRect::add(int posIdx, hdPoint *p)
 
 hdPoint hdMultiPosRect::center(int posIdx)
 {
-	point = hdPoint(x[posIdx] + (width / 2) , y[posIdx] + (height / 2));
+	point = hdPoint(x[posIdx] + (width / 2), y[posIdx] + (height / 2));
 	return point;
 }
 

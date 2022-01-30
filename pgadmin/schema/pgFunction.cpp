@@ -665,31 +665,31 @@ pgFunction *pgFunctionFactory::AppendFunctions(pgObject *obj, pgSchema *schema, 
 		// the Open Source version of Greenplum already has the pg_get_function_result() function,
 		// however the 4.3 stable release does not have this function
 		functions = obj->GetDatabase()->ExecuteSet(
-		                       wxT("SELECT pr.oid, pr.xmin, pr.*, format_type(TYP.oid, NULL) AS typname, typns.nspname AS typnsp, lanname, ") +
-		                       argNamesCol  + argDefsCol + proConfigCol + proType +
-		                       wxT("       pg_get_userbyid(proowner) as funcowner, description") + seclab + wxT("\n")
-		                       wxT("  FROM pg_proc pr\n")
-		                       wxT("  JOIN pg_type typ ON typ.oid=prorettype\n")
-		                       wxT("  JOIN pg_namespace typns ON typns.oid=typ.typnamespace\n")
-		                       wxT("  JOIN pg_language lng ON lng.oid=prolang\n")
-		                       wxT("  LEFT OUTER JOIN pg_description des ON (des.objoid=pr.oid AND des.classoid='pg_proc'::regclass)\n")
-		                       + restriction +
-		                       wxT(" ORDER BY proname"));
+		                wxT("SELECT pr.oid, pr.xmin, pr.*, format_type(TYP.oid, NULL) AS typname, typns.nspname AS typnsp, lanname, ") +
+		                argNamesCol  + argDefsCol + proConfigCol + proType +
+		                wxT("       pg_get_userbyid(proowner) as funcowner, description") + seclab + wxT("\n")
+		                wxT("  FROM pg_proc pr\n")
+		                wxT("  JOIN pg_type typ ON typ.oid=prorettype\n")
+		                wxT("  JOIN pg_namespace typns ON typns.oid=typ.typnamespace\n")
+		                wxT("  JOIN pg_language lng ON lng.oid=prolang\n")
+		                wxT("  LEFT OUTER JOIN pg_description des ON (des.objoid=pr.oid AND des.classoid='pg_proc'::regclass)\n")
+		                + restriction +
+		                wxT(" ORDER BY proname"));
 	}
 	else
 	{
 		// new code for !Greenplum
 		functions = obj->GetDatabase()->ExecuteSet(
-		                       wxT("SELECT pr.oid, pr.xmin, pr.*, pg_get_function_result(pr.oid) AS typname, typns.nspname AS typnsp, lanname, ") +
-		                       argNamesCol  + argDefsCol + proConfigCol + proType +
-		                       wxT("       pg_get_userbyid(proowner) as funcowner, description") + seclab + wxT("\n")
-		                       wxT("  FROM pg_proc pr\n")
-		                       wxT("  JOIN pg_type typ ON typ.oid=prorettype\n")
-		                       wxT("  JOIN pg_namespace typns ON typns.oid=typ.typnamespace\n")
-		                       wxT("  JOIN pg_language lng ON lng.oid=prolang\n")
-		                       wxT("  LEFT OUTER JOIN pg_description des ON (des.objoid=pr.oid AND des.classoid='pg_proc'::regclass)\n")
-		                       + restriction +
-		                       wxT(" ORDER BY proname"));
+		                wxT("SELECT pr.oid, pr.xmin, pr.*, pg_get_function_result(pr.oid) AS typname, typns.nspname AS typnsp, lanname, ") +
+		                argNamesCol  + argDefsCol + proConfigCol + proType +
+		                wxT("       pg_get_userbyid(proowner) as funcowner, description") + seclab + wxT("\n")
+		                wxT("  FROM pg_proc pr\n")
+		                wxT("  JOIN pg_type typ ON typ.oid=prorettype\n")
+		                wxT("  JOIN pg_namespace typns ON typns.oid=typ.typnamespace\n")
+		                wxT("  JOIN pg_language lng ON lng.oid=prolang\n")
+		                wxT("  LEFT OUTER JOIN pg_description des ON (des.objoid=pr.oid AND des.classoid='pg_proc'::regclass)\n")
+		                + restriction +
+		                wxT(" ORDER BY proname"));
 	}
 
 	pgSet *types = obj->GetDatabase()->ExecuteSet(wxT(
@@ -785,15 +785,16 @@ pgFunction *pgFunctionFactory::AppendFunctions(pgObject *obj, pgSchema *schema, 
 				getArrayFromCommaSeparatedList(tmp, argDefValArray);
 
 				function->iSetArgDefValCount(functions->GetLong(wxT("pronargdefaults")));
-				
+
 				// Check if it is a window function
 				bool isWindow = false;
 				if (obj->GetConnection()->BackendMinimumVersion(11, 0))
 				{
-					char* c = functions->GetCharPtr(wxT("prokind"));
-					isWindow = c!=NULL && *c=='w';
+					char *c = functions->GetCharPtr(wxT("prokind"));
+					isWindow = c != NULL && *c == 'w';
 				}
-				else {
+				else
+				{
 					isWindow = functions->GetBool(wxT("proiswindow"));
 				}
 				function->iSetIsWindow(isWindow);
@@ -1070,11 +1071,11 @@ wxString pgProcedure::GetExecSql(ctlTree *browser)
 pgObject *pgFunctionFactory::CreateObjects(pgCollection *collection, ctlTree *browser, const wxString &restr)
 {
 	wxString funcRestriction = wxString::Format( wxT(" WHERE %s AND pronamespace = %lu::oid\n   AND typname NOT IN ('trigger', 'event_trigger') \n"),
-		collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT(" pr.prokind!='a'") : wxT(" proisagg = FALSE"),
-		collection->GetSchema()->GetOid()
-		);
+	                           collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT(" pr.prokind!='a'") : wxT(" proisagg = FALSE"),
+	                           collection->GetSchema()->GetOid()
+	                                           );
 
-	
+
 	if (collection->GetConnection()->EdbMinimumVersion(8, 1))
 		funcRestriction += wxT("   AND NOT (lanname = 'edbspl' AND protype = '1')\n");
 	else if (collection->GetConnection()->EdbMinimumVersion(8, 0))
@@ -1093,9 +1094,9 @@ pgCollection *pgFunctionFactory::CreateCollection(pgObject *obj)
 pgObject *pgTriggerFunctionFactory::CreateObjects(pgCollection *collection, ctlTree *browser, const wxString &restr)
 {
 	wxString funcRestriction = wxString::Format( wxT(" WHERE %s AND pronamespace = %lu::oid\n"),
-		collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT(" pr.prokind!='a'") : wxT(" proisagg = FALSE"),
-		collection->GetSchema()->GetOid()
-		);
+	                           collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT(" pr.prokind!='a'") : wxT(" proisagg = FALSE"),
+	                           collection->GetSchema()->GetOid()
+	                                           );
 
 	if(collection->GetConnection()->BackendMinimumVersion(9, 3))
 	{
@@ -1114,10 +1115,10 @@ pgObject *pgTriggerFunctionFactory::CreateObjects(pgCollection *collection, ctlT
 pgObject *pgProcedureFactory::CreateObjects(pgCollection *collection, ctlTree *browser, const wxString &restr)
 {
 	wxString funcRestriction = wxString::Format( wxT(" WHERE %s AND pronamespace = %lu::oid AND lanname = 'edbspl'\n"),
-		collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT(" pr.prokind!='a'") : wxT(" proisagg = FALSE"),
-		collection->GetSchema()->GetOid()
-		);
-	
+	                           collection->GetConnection()->BackendMinimumVersion(11, 0) ? wxT(" pr.prokind!='a'") : wxT(" proisagg = FALSE"),
+	                           collection->GetSchema()->GetOid()
+	                                           );
+
 	if (collection->GetConnection()->EdbMinimumVersion(8, 1))
 		funcRestriction += wxT("   AND protype = '1'\n");
 	else

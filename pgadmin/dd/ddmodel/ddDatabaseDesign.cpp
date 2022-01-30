@@ -527,7 +527,7 @@ bool ddDatabaseDesign::writeXmlModel(wxString file)
 		wxMessageBox(_("Failed to write the model file!"), _("Error"), wxICON_ERROR | wxOK);
 		return false;
 	}
-	rc = xmlTextWriterStartDocument(xmlWriter, NULL, "UTF-8" , NULL);
+	rc = xmlTextWriterStartDocument(xmlWriter, NULL, "UTF-8", NULL);
 	if(rc < 0)
 	{
 		wxMessageBox(_("Failed to write the model file!"), _("Error"), wxICON_ERROR | wxOK);

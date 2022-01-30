@@ -136,22 +136,23 @@ void pgSequence::UpdateValues()
 		delete sequence;
 	}*/
 	pgSet *sequence = NULL;
-	if (GetConnection()->BackendMinimumVersion(10, 0)) {
+	if (GetConnection()->BackendMinimumVersion(10, 0))
+	{
 		sequence = ExecuteSet(
-			wxString::Format(
-				wxT("SELECT s.last_value, s.min_value, s.max_value, s.cache_size AS cache_value, s.\"cycle\" AS is_cycled, s.increment_by, c.is_called")
-				wxT(" FROM pg_sequences s CROSS JOIN %s c")
-				wxT(" WHERE QUOTE_IDENT(s.schemaname) || '.' || QUOTE_IDENT(s.sequencename) = '%s'")
-				,GetQuotedFullIdentifier().c_str()
-				,GetQuotedFullIdentifier().c_str()
-				)
-			);
+		               wxString::Format(
+		                   wxT("SELECT s.last_value, s.min_value, s.max_value, s.cache_size AS cache_value, s.\"cycle\" AS is_cycled, s.increment_by, c.is_called")
+		                   wxT(" FROM pg_sequences s CROSS JOIN %s c")
+		                   wxT(" WHERE QUOTE_IDENT(s.schemaname) || '.' || QUOTE_IDENT(s.sequencename) = '%s'")
+		                   , GetQuotedFullIdentifier().c_str()
+		                   , GetQuotedFullIdentifier().c_str()
+		               )
+		           );
 	}
 	else
 	{
 		sequence = ExecuteSet(
-			wxT("SELECT last_value, min_value, max_value, cache_value, is_cycled, increment_by, is_called\n")
-			wxT("  FROM ") + GetQuotedFullIdentifier());
+		               wxT("SELECT last_value, min_value, max_value, cache_value, is_cycled, increment_by, is_called\n")
+		               wxT("  FROM ") + GetQuotedFullIdentifier());
 	}
 	if (sequence)
 	{

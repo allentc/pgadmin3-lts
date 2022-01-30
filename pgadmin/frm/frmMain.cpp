@@ -381,10 +381,10 @@ void frmMain::CreateMenus()
 	new addnamedrestorepointServiceFactory(menuFactories, toolsMenu, 0);
 
 	new createFactory(menuFactories, editMenu, toolBar);
-/*ABDUL:BEGIN 27 Feb 2020: push drop menu away from create*/
+	/*ABDUL:BEGIN 27 Feb 2020: push drop menu away from create*/
 	//new dropFactory(menuFactories, editMenu, toolBar);
 	//new dropCascadedFactory(menuFactories, editMenu, 0);
-/*ABDUL:END*/	
+	/*ABDUL:END*/
 	new truncateFactory(menuFactories, editMenu, 0);
 	new truncateCascadedFactory(menuFactories, editMenu, 0);
 	new resetTableStatsFactory(menuFactories, editMenu, 0);
@@ -392,10 +392,10 @@ void frmMain::CreateMenus()
 	new reassignDropOwnedFactory(menuFactories, editMenu, 0);
 	new moveTablespaceFactory(menuFactories, editMenu, 0);
 	new searchObjectFactory(menuFactories, editMenu, 0);
-/*ABDUL:BEGIN 27 Feb 2020: push drop menu away from create*/
+	/*ABDUL:BEGIN 27 Feb 2020: push drop menu away from create*/
 	new dropFactory(menuFactories, editMenu, toolBar);
-	new dropCascadedFactory(menuFactories, editMenu, 0);	
-/*ABDUL:END*/	
+	new dropCascadedFactory(menuFactories, editMenu, 0);
+	/*ABDUL:END*/
 
 	editMenu->AppendSeparator();
 

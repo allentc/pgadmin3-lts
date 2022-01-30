@@ -20,7 +20,7 @@
 class hdButtonHandle : public hdIHandle
 {
 public:
-	hdButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size);
+	hdButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size);
 	~hdButtonHandle();
 
 	virtual wxCursor createCursor();

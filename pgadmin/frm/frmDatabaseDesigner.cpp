@@ -469,7 +469,7 @@ void frmDatabaseDesigner::OnAddColumn(wxCommandEvent &event)
 						wxString msg(wxT("Error trying to add new column '"));
 						msg.Append(tmpString);
 						msg.Append(wxT("' column name already in use"));
-						wxMessageDialog info( this, msg ,
+						wxMessageDialog info( this, msg,
 						                      wxT("Column name already in use"),
 						                      wxNO_DEFAULT | wxOK | wxICON_EXCLAMATION);
 						again = true;
@@ -533,7 +533,7 @@ void frmDatabaseDesigner::OnDiagramGeneration(wxCommandEvent &event)
 	wxString errors;
 	if(!design->validateModel(errors))
 	{
-		wxMessageDialog dialog(this, errors , wxT("Errors detected in the database model"), wxOK | wxICON_EXCLAMATION | wxSTAY_ON_TOP);
+		wxMessageDialog dialog(this, errors, wxT("Errors detected in the database model"), wxOK | wxICON_EXCLAMATION | wxSTAY_ON_TOP);
 		dialog.ShowModal();
 	}
 	else
@@ -554,7 +554,7 @@ void frmDatabaseDesigner::OnModelGeneration(wxCommandEvent &event)
 	wxString errors;
 	if(!design->validateModel(errors))
 	{
-		wxMessageDialog dialog(this, errors , wxT("Errors detected in the database model"), wxOK | wxICON_EXCLAMATION | wxSTAY_ON_TOP);
+		wxMessageDialog dialog(this, errors, wxT("Errors detected in the database model"), wxOK | wxICON_EXCLAMATION | wxSTAY_ON_TOP);
 		dialog.ShowModal();
 	}
 	else

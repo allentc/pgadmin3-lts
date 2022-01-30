@@ -281,21 +281,24 @@ int dlgIndexConstraint::Go(bool modal)
 
 		cbType->Append(wxT(""));
 		/*ABDUL:BEGIN*/
-		if( connection->BackendMinimumVersion(12, 0) ) {
+		if( connection->BackendMinimumVersion(12, 0) )
+		{
 			set = connection->ExecuteSet(
-		          wxT("SELECT oid, amname FROM pg_am ")
-		          wxT("WHERE EXISTS (SELECT 1 FROM pg_proc WHERE oid=amhandler) ")
-		          wxT("ORDER BY amname"));		
-		} else {		
+			          wxT("SELECT oid, amname FROM pg_am ")
+			          wxT("WHERE EXISTS (SELECT 1 FROM pg_proc WHERE oid=amhandler) ")
+			          wxT("ORDER BY amname"));
+		}
+		else
+		{
 			set = connection->ExecuteSet(
-		          wxT("SELECT oid, amname FROM pg_am ")
-		          wxT("WHERE EXISTS (SELECT 1 FROM pg_proc WHERE oid=amgettuple) ")
-		          wxT("ORDER BY amname"));
+			          wxT("SELECT oid, amname FROM pg_am ")
+			          wxT("WHERE EXISTS (SELECT 1 FROM pg_proc WHERE oid=amgettuple) ")
+			          wxT("ORDER BY amname"));
 		}
 		/*set = connection->ExecuteSet(
 		          wxT("SELECT oid, amname FROM pg_am ")
 		          wxT("WHERE EXISTS (SELECT 1 FROM pg_proc WHERE oid=amgettuple) ")
-		          wxT("ORDER BY amname"));*/		
+		          wxT("ORDER BY amname"));*/
 		/*ABDUL:END*/
 		if (set)
 		{

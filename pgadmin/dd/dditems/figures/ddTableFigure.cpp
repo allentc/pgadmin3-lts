@@ -1777,7 +1777,7 @@ wxString ddTableFigure::generateAltersTable(pgConn *connection, wxString schemaN
 	}
 	delete iteratorRelations;
 
-	wxArrayString fksToDelete = ddImportDBUtils::getFkAtDbNotInModel(connection, dbTable->OIDTable, schemaName, validFks , design);
+	wxArrayString fksToDelete = ddImportDBUtils::getFkAtDbNotInModel(connection, dbTable->OIDTable, schemaName, validFks, design);
 
 	int max = fksToDelete.Count();
 	for(i = 0; i < max; i++)

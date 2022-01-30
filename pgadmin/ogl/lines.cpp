@@ -595,7 +595,7 @@ void wxLineShape::DrawArrow(wxDC &dc, wxArrowHead *arrow, double xOffset, bool p
 	double positionOnLineX, positionOnLineY;
 
 	// Position of start point of line, at the end of which we draw the arrow.
-	double startPositionX = 0.0 , startPositionY = 0.0;
+	double startPositionX = 0.0, startPositionY = 0.0;
 
 	switch (arrow->GetPosition())
 	{

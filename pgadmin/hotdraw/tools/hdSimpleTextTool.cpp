@@ -22,7 +22,7 @@
 
 class hdDrawingEditor;
 
-hdSimpleTextTool::hdSimpleTextTool(hdDrawingView *view, hdIFigure *fig, hdITool *dt, bool fastEdit , wxString dialogCaption, wxString dialogMessage):
+hdSimpleTextTool::hdSimpleTextTool(hdDrawingView *view, hdIFigure *fig, hdITool *dt, bool fastEdit, wxString dialogCaption, wxString dialogMessage):
 	hdFigureTool(view, fig, dt)
 {
 	dlgMessage = dialogMessage;

@@ -42,7 +42,7 @@
 
 BEGIN_EVENT_TABLE(dlgForeignKey, dlgProperty)
 	EVT_CHECKBOX(XRCID("chkDeferrable"),        dlgProperty::OnChange)
-	EVT_CHECKBOX(XRCID("chkAutoIndex") ,        dlgProperty::OnChange)
+	EVT_CHECKBOX(XRCID("chkAutoIndex"),        dlgProperty::OnChange)
 	EVT_TEXT(XRCID("txtIndexName"),             dlgProperty::OnChange)
 
 	EVT_CHECKBOX(XRCID("chkDontValidate"),      dlgForeignKey::OnChangeValidate)

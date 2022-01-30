@@ -24,7 +24,7 @@
 #include "images/ddUp.pngc"
 #include "images/ddDown.pngc"
 
-ddScrollBarHandle::ddScrollBarHandle(ddTableFigure *owner, hdILocator *scrollBarLocator , wxSize &size):
+ddScrollBarHandle::ddScrollBarHandle(ddTableFigure *owner, hdILocator *scrollBarLocator, wxSize &size):
 	hdLocatorHandle(owner, scrollBarLocator)
 {
 	table = owner;

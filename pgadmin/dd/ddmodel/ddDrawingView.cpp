@@ -23,7 +23,7 @@
 #include "dd/dditems/utilities/ddDataType.h"
 #include "dd/dditems/utilities/ddTableNameDialog.h"
 
-ddDrawingView::ddDrawingView(int diagram, wxWindow *ddParent, ddDrawingEditor *editor , wxSize size, hdDrawing *drawing)
+ddDrawingView::ddDrawingView(int diagram, wxWindow *ddParent, ddDrawingEditor *editor, wxSize size, hdDrawing *drawing)
 	: hdDrawingView(diagram, ddParent, editor, size, drawing)
 {
 }

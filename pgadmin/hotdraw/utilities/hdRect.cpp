@@ -44,10 +44,10 @@ hdRect::hdRect(hdPoint &point):
 
 void hdRect::add (int newX, int newY)
 {
-	int x1 = hdGeometry::min(x , newX);
-	int x2 = hdGeometry::max(x + width , newX);
-	int y1 = hdGeometry::min(y , newY);
-	int y2 = hdGeometry::max(y + height , newY);
+	int x1 = hdGeometry::min(x, newX);
+	int x2 = hdGeometry::max(x + width, newX);
+	int y1 = hdGeometry::min(y, newY);
+	int y2 = hdGeometry::max(y + height, newY);
 
 	SetX(x1);
 	SetWidth(x2 - x1);
@@ -58,14 +58,14 @@ void hdRect::add (int newX, int newY)
 
 void hdRect::add (hdRect *newRect)
 {
-	add(newRect->GetTopLeft().x , newRect->GetTopLeft().y);
-	add(newRect->GetBottomRight().x , newRect->GetBottomRight().y);
+	add(newRect->GetTopLeft().x, newRect->GetTopLeft().y);
+	add(newRect->GetBottomRight().x, newRect->GetBottomRight().y);
 }
 
 void hdRect::add (hdRect newRect)
 {
-	add(newRect.GetTopLeft().x , newRect.GetTopLeft().y);
-	add(newRect.GetBottomRight().x , newRect.GetBottomRight().y);
+	add(newRect.GetTopLeft().x, newRect.GetTopLeft().y);
+	add(newRect.GetBottomRight().x, newRect.GetBottomRight().y);
 }
 
 void hdRect::add(hdPoint *p)
@@ -77,7 +77,7 @@ void hdRect::add(hdPoint *p)
 
 hdPoint hdRect::center()
 {
-	point = hdPoint(x + (width / 2) , y + (height / 2));
+	point = hdPoint(x + (width / 2), y + (height / 2));
 	return point;
 }
 

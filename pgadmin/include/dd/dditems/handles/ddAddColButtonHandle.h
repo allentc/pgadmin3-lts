@@ -17,7 +17,7 @@
 class ddAddColButtonHandle : public hdButtonHandle
 {
 public:
-	ddAddColButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size);
+	ddAddColButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size);
 	~ddAddColButtonHandle();
 
 	virtual void invokeStart(hdMouseEvent &event, hdDrawingView *view);
