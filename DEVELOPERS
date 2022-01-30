@@ -25,6 +25,12 @@ fooObjCollection is a collection of fooObjects
 fooObjFactory creates fooObjects
 
 
+Coding style
+------------
+This project uses the 'astyle' tool to give the code a uniform formatting.
+Use './enforce-style.sh' or 'make style' to apply the necessary changes.
+
+
 To add actions to the main window (frmMain)
 --------------------------------------------
 
