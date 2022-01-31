@@ -151,7 +151,6 @@ You will need:
   If you want to build the documentation and/or the installer you additionally
   need the package "Source Code".
 - libssh2 1.10.0 or above from https://www.libssh2.org/
-- PostgreSQL 9.2.24 (binary distribution) from http://www.postgresql.org/
 - PostgreSQL 10.19 or later (binary distribution) from http://www.postgresql.org/
 - Sphinx 1.0 or above from http://sphinx.pocoo.org/
 - Microsoft HTML Help Workshop
@@ -170,7 +169,7 @@ Building:
        echo BUILD = release>> ..\..\build\msw\config.vc
        nmake -f makefile.vc COMPILER_VERSION=142
 
-3) Install PostgreSQL 9.2.24 to a convenient location pointed to by the %PGDIR%
+3) Unpack PostgreSQL to a convenient location pointed to by the %PGDIR%
    environment variable.
    
 4) Unpack, compile and install libssh2 to a convenient location pointed to by the
@@ -185,7 +184,4 @@ Building:
    prerequisite DLLs from the wxWidgets and PostgreSQL installations into the
    directory where the EXE file is located, or have those directories in your
    path.
-   To actually connect to a Postgres-Server higher than 11 that is using SCRAM-
-   authentication you need the "libpq.dll" from the Postgres 10.19 (or later)
-   package.
 
