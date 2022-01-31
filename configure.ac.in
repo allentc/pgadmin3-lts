@@ -26,7 +26,6 @@ AC_CHECK_HEADERS([errno.h fcntl.h stdio.h unistd.h sys/uio.h])
 AC_CHECK_HEADERS([sys/select.h sys/socket.h sys/ioctl.h sys/time.h])
 AC_CHECK_HEADERS([sys/un.h], [have_sys_un_h=yes], [have_sys_un_h=no])
 AM_CONDITIONAL([HAVE_SYS_UN_H], test "x$have_sys_un_h" = xyes)
-AC_CONFIG_HEADERS([pgadmin/include/libssh2/libssh2_config.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
@@ -68,6 +67,8 @@ CHECK_LIBXML2
 
 LOCATE_LIBXSLT
 SETUP_LIBXSLT
+
+AC_CHECK_LIB([ssh2], [libssh2_session_init_ex], , [AC_MSG_ERROR([Couldn't find libssh2!])])
 
 # Configure parameters
 AC_ARG_WITH(libgcrypt,

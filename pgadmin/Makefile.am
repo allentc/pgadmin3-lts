@@ -49,7 +49,6 @@ include gqb/module.mk
 include hotdraw/module.mk
 include ui/module.mk
 include utils/module.mk
-include libssh2/module.mk
 
 if SUN_CC
   __CFLAGS=""
@@ -80,11 +79,7 @@ nobase_dist_pkgdata_DATA += \
 	$(TMP_ui)
 endif
 
-if BUILD_SSH_TUNNEL
-AM_CPPFLAGS = -DDATA_DIR=\"$(pkgdatadir)/\" -I$(top_srcdir)/pgadmin/include -I$(top_srcdir)/pgadmin/include/libssh2 $(__CPPFLAGS) $(__EDB_LIBPQ)
-else
 AM_CPPFLAGS = -DDATA_DIR=\"$(pkgdatadir)/\" -I$(top_srcdir)/pgadmin/include $(__CPPFLAGS) $(__EDB_LIBPQ)
-endif
 
 # Automake trys to execute install-exec-hook if it appears anywhere in the file, so we need a dummy
 # for non-APPBUNDLE cases.
@@ -100,11 +95,7 @@ nobase_dist_data_DATA += \
 	$(TMP_ui)
 endif
 
-if BUILD_SSH_TUNNEL
-AM_CPPFLAGS = -I$(top_srcdir)/pgadmin/include -I$(top_srcdir)/pgadmin/include/libssh2 $(__CPPFLAGS) $(__EDB_LIBPQ)
-else
 AM_CPPFLAGS = -I$(top_srcdir)/pgadmin/include $(__CPPFLAGS) $(__EDB_LIBPQ)
-endif
 
 install-exec-hook:
 	cd $(bindir) ;\
