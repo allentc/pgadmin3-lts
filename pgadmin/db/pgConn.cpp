@@ -588,7 +588,7 @@ wxString pgConn::EncryptPassword(const wxString &user, const wxString &password)
 	char *chrPassword;
 	wxString strPassword;
 
-	chrPassword = PQencryptPassword(password.mb_str(*conv), user.mb_str(*conv));
+	chrPassword = PQencryptPasswordConn(conn, password.mb_str(*conv), user.mb_str(*conv), NULL);
 	strPassword = wxString::FromAscii(chrPassword);
 
 	PQfreemem(chrPassword);

@@ -20,7 +20,7 @@ You will need:
 - libxml2 2.6.18 or above from http://www.xmlsoft.org/
 - libxslt 1.1.x or above from http://www.xmlsoft.org/
 - libssh2 1.10.0 or above from http://www.libssh2.org/
-- PostgreSQL 8.4 or above from http://www.postgresql.org/
+- PostgreSQL 10.x or above from http://www.postgresql.org/
 - Sphinx 1.0 or above from http://sphinx.pocoo.org/
 
 Building:
@@ -77,7 +77,7 @@ You will need:
 - libxml2 2.6.18 or above from http://www.xmlsoft.org/
 - libxslt 1.1.x or above from http://www.xmlsoft.org/
 - libssh2 1.10.0 or above from http://www.libssh2.org/
-- PostgreSQL 8.4 or above from http://www.postgresql.org/
+- PostgreSQL 10.x or above from http://www.postgresql.org/
 - Sphinx 1.0 or above from http://sphinx.pocoo.org/
 
 Building:
