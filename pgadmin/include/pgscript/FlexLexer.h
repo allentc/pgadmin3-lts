@@ -92,7 +92,7 @@ extern "C++"
 		// Switch to new input/output streams.  A nil stream pointer
 		// indicates "keep the current one".
 		virtual void switch_streams( FLEX_STD istream *new_in = 0,
-		FLEX_STD ostream *new_out = 0 ) = 0;
+		                             FLEX_STD ostream *new_out = 0 ) = 0;
 
 		int lineno() const
 		{

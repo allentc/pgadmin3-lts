@@ -176,15 +176,15 @@ void frmPgpassConfig::WriteFile(pgConn *conn)
 		// Before writing it into the file we need to escape "\" and ":"
 		pgPassConfigLine line = lines.Item(i);
 		line.hostname.Replace(wxT("\\"), wxT("\\\\"));
-		line.hostname.Replace(wxT(":") , wxT("\\:"));
+		line.hostname.Replace(wxT(":"), wxT("\\:"));
 		line.port.Replace(wxT("\\"), wxT("\\\\"));
-		line.port.Replace(wxT(":") , wxT("\\:"));
+		line.port.Replace(wxT(":"), wxT("\\:"));
 		line.database.Replace(wxT("\\"), wxT("\\\\"));
-		line.database.Replace(wxT(":") , wxT("\\:"));
+		line.database.Replace(wxT(":"), wxT("\\:"));
 		line.username.Replace(wxT("\\"), wxT("\\\\"));
-		line.username.Replace(wxT(":") , wxT("\\:"));
+		line.username.Replace(wxT(":"), wxT("\\:"));
 		line.password.Replace(wxT("\\"), wxT("\\\\"));
-		line.password.Replace(wxT(":") , wxT("\\:"));
+		line.password.Replace(wxT(":"), wxT("\\:"));
 
 		wxString strLine = line.hostname + wxT(":") + line.port + wxT(":") +
 		                   line.database + wxT(":") + line.username + wxT(":") + line.password + wxT("\n");

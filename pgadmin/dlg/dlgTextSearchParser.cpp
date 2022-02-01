@@ -211,10 +211,10 @@ void dlgTextSearchParser::CheckChange()
 		wxString name = GetName();
 		bool enable = true;
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-		CheckValid(enable, cbStart->GetValue().Length() > 0 , _("Please select a start function."));
-		CheckValid(enable, cbGetToken->GetValue().Length() > 0 , _("Please select a gettoken function."));
-		CheckValid(enable, cbEnd->GetValue().Length() > 0 , _("Please select an end function."));
-		CheckValid(enable, cbLextypes->GetValue().Length() > 0 , _("Please select a lextypes function."));
+		CheckValid(enable, cbStart->GetValue().Length() > 0, _("Please select a start function."));
+		CheckValid(enable, cbGetToken->GetValue().Length() > 0, _("Please select a gettoken function."));
+		CheckValid(enable, cbEnd->GetValue().Length() > 0, _("Please select an end function."));
+		CheckValid(enable, cbLextypes->GetValue().Length() > 0, _("Please select a lextypes function."));
 
 		EnableOK(enable);
 	}

@@ -57,12 +57,12 @@ void gqbSchema::createTables(gqbBrowser *tablesBrowser, wxTreeItemId parentNode,
 			if (relkind == wxT("r")) // Table
 			{
 				table = new gqbTable(this, tmpname, conn, GQB_TABLE, tables->GetOid(wxT("oid")));
-				parent = tablesBrowser->AppendItem(parentNode, tables->GetVal(wxT("relname")) , tableImage, tableImage, table);
+				parent = tablesBrowser->AppendItem(parentNode, tables->GetVal(wxT("relname")), tableImage, tableImage, table);
 			}
 			else if (relkind == wxT("v") || relkind == wxT("m"))
 			{
 				table = new gqbTable(this, tmpname, conn, GQB_VIEW, tables->GetOid(wxT("oid")));
-				parent = tablesBrowser->AppendItem(parentNode, tables->GetVal(wxT("relname")) , viewImage, viewImage, table);
+				parent = tablesBrowser->AppendItem(parentNode, tables->GetVal(wxT("relname")), viewImage, viewImage, table);
 			}
 			else if (relkind == wxT("x"))  // Greenplum external table
 			{

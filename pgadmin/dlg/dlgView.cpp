@@ -400,7 +400,7 @@ void dlgView::CheckChange()
 	wxString name = GetName();
 
 	CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-	CheckValid(enable, txtSqlBox->GetText().Trim(true).Trim(false).Length() > 0 , _("Please enter function definition."));
+	CheckValid(enable, txtSqlBox->GetText().Trim(true).Trim(false).Length() > 0, _("Please enter function definition."));
 
 	if (!connection->BackendMinimumVersion(9, 3))
 	{

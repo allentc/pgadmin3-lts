@@ -17,7 +17,7 @@
 class ddAddFkButtonHandle : public hdButtonHandle
 {
 public:
-	ddAddFkButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size);
+	ddAddFkButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size);
 	~ddAddFkButtonHandle();
 
 	virtual void invokeStart(hdMouseEvent &event, hdDrawingView *view);

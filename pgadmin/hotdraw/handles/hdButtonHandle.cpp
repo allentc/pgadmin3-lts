@@ -21,7 +21,7 @@
 
 
 
-hdButtonHandle::hdButtonHandle(hdIFigure *owner, hdILocator *buttonLocator , wxBitmap &buttonImage, wxSize &size):
+hdButtonHandle::hdButtonHandle(hdIFigure *owner, hdILocator *buttonLocator, wxBitmap &buttonImage, wxSize &size):
 	hdIHandle(owner)
 {
 	buttonIcon = buttonImage;

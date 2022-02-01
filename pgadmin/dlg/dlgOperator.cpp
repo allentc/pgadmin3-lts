@@ -46,14 +46,14 @@ BEGIN_EVENT_TABLE(dlgOperator, dlgTypeProperty)
 	EVT_COMBOBOX(XRCID("cbRightType"),          dlgOperator::OnChangeTypeRight)
 	EVT_TEXT(XRCID("cbProcedure"),              dlgProperty::OnChange)
 	EVT_COMBOBOX(XRCID("cbProcedure"),          dlgProperty::OnChange)
-	EVT_TEXT(XRCID("cbLeftSort") ,              dlgOperator::OnChangeJoin)
-	EVT_COMBOBOX(XRCID("cbLeftSort") ,          dlgOperator::OnChangeJoin)
-	EVT_TEXT(XRCID("cbRightSort") ,             dlgOperator::OnChangeJoin)
-	EVT_COMBOBOX(XRCID("cbRightSort") ,         dlgOperator::OnChangeJoin)
-	EVT_TEXT(XRCID("cbLess") ,                  dlgOperator::OnChangeJoin)
-	EVT_COMBOBOX(XRCID("cbLess") ,              dlgOperator::OnChangeJoin)
-	EVT_TEXT(XRCID("cbGreater") ,               dlgOperator::OnChangeJoin)
-	EVT_COMBOBOX(XRCID("cbGreater") ,           dlgOperator::OnChangeJoin)
+	EVT_TEXT(XRCID("cbLeftSort"),              dlgOperator::OnChangeJoin)
+	EVT_COMBOBOX(XRCID("cbLeftSort"),          dlgOperator::OnChangeJoin)
+	EVT_TEXT(XRCID("cbRightSort"),             dlgOperator::OnChangeJoin)
+	EVT_COMBOBOX(XRCID("cbRightSort"),         dlgOperator::OnChangeJoin)
+	EVT_TEXT(XRCID("cbLess"),                  dlgOperator::OnChangeJoin)
+	EVT_COMBOBOX(XRCID("cbLess"),              dlgOperator::OnChangeJoin)
+	EVT_TEXT(XRCID("cbGreater"),               dlgOperator::OnChangeJoin)
+	EVT_COMBOBOX(XRCID("cbGreater"),           dlgOperator::OnChangeJoin)
 END_EVENT_TABLE();
 
 
@@ -207,7 +207,7 @@ void dlgOperator::CheckChange()
 		wxString name = GetName();
 		bool enable = true;
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-		CheckValid(enable, cbLeftType->GetGuessedSelection() > 0 || cbRightType->GetGuessedSelection() > 0 , _("Please select left or right datatype."));
+		CheckValid(enable, cbLeftType->GetGuessedSelection() > 0 || cbRightType->GetGuessedSelection() > 0, _("Please select left or right datatype."));
 		CheckValid(enable, cbProcedure->GetGuessedSelection() >= 0, _("Please specify a procedure."));
 
 		EnableOK(enable);

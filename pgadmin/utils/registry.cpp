@@ -81,7 +81,7 @@ pgRegKey *pgRegKey::OpenRegKey(HKEY root, const wxString &subkey, PGREGACCESSMOD
 {
 	wxString strKey = subkey;
 
-	!subkey.IsEmpty() && subkey.EndsWith(wxT("\\"), &strKey);
+	!subkey.IsEmpty() &&subkey.EndsWith(wxT("\\"), &strKey);
 	pgRegKey *tmpKey = new pgRegKey(root, strKey, wowMode, accessmode);
 
 	HKEY tmpRegKey = 0;

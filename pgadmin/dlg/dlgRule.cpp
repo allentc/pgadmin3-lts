@@ -154,7 +154,7 @@ void dlgRule::CheckChange()
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
 		CheckValid(enable, rbxEvent->GetSelection() >= 0,
 		           _("Please select at an event."));
-		CheckValid(enable, !txtSqlBox->GetTextLength() || txtSqlBox->GetTextLength() > 6 , _("Please enter function definition."));
+		CheckValid(enable, !txtSqlBox->GetTextLength() || txtSqlBox->GetTextLength() > 6, _("Please enter function definition."));
 
 		EnableOK(enable);
 	}
@@ -171,7 +171,7 @@ wxString dlgRule::GetSql()
 		sql += wxT("CREATE OR REPLACE RULE ") + qtIdent(name)
 		       + wxT(" AS\n   ON ") + rbxEvent->GetStringSelection()
 		       + wxT(" TO ") + table->GetQuotedFullIdentifier();
-		AppendIfFilled(sql, wxT("\n   WHERE ") , txtCondition->GetValue());
+		AppendIfFilled(sql, wxT("\n   WHERE "), txtCondition->GetValue());
 
 		sql += wxT("\n   DO ");
 

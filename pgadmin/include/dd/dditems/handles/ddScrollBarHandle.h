@@ -22,7 +22,7 @@
 class ddScrollBarHandle : public hdLocatorHandle
 {
 public:
-	ddScrollBarHandle(ddTableFigure *owner, hdILocator *scrollBarLocator , wxSize &size);
+	ddScrollBarHandle(ddTableFigure *owner, hdILocator *scrollBarLocator, wxSize &size);
 	~ddScrollBarHandle();
 
 

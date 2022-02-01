@@ -79,7 +79,7 @@ ctlSQLBox::ctlSQLBox(wxWindow *parent, wxWindowID id, const wxPoint &pos, const 
 
 void ctlSQLBox::Create(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style)
 {
-	wxStyledTextCtrl::Create(parent, id , pos, size, style);
+	wxStyledTextCtrl::Create(parent, id, pos, size, style);
 
 	// Clear all styles
 	StyleClearAll();

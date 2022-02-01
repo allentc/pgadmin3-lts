@@ -31,7 +31,7 @@ enum
 class hdDrawingView : public wxScrolledWindow
 {
 public:
-	hdDrawingView(int diagram, wxWindow *ddParent, hdDrawingEditor *editor , wxSize size, hdDrawing *drawing);
+	hdDrawingView(int diagram, wxWindow *ddParent, hdDrawingEditor *editor, wxSize size, hdDrawing *drawing);
 	~hdDrawingView();
 
 	virtual void ScrollToMakeVisible(hdPoint p);

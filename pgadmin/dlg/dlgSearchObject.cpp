@@ -552,15 +552,16 @@ void dlgSearchObject::OnSearch(wxCommandEvent &ev)
 		             wxT("inner join pg_class t on a.attrelid = t.oid and t.relkind in ('r','v','m') ")
 		             wxT("left join pg_namespace n on t.relnamespace = n.oid ")
 		             wxT("where a.attnum > 0 ")
-		             wxT("  and (ty.typname ilike ") + txtPatternStr; //+ wxT(" or ad.adsrc ilike ") + txtPatternStr + wxT(") ")					 
-				if(currentdb->BackendMinimumVersion(12, 0)) {
-					searchSQL += wxT(" or pg_catalog.pg_get_expr(ad.adbin, ad.adrelid) ilike "); 
-				}
-				else
-				{
-					searchSQL += wxT(" or ad.adsrc ilike ");
-				}
-				searchSQL += txtPatternStr + wxT(") ")
+		             wxT("  and (ty.typname ilike ") + txtPatternStr; //+ wxT(" or ad.adsrc ilike ") + txtPatternStr + wxT(") ")
+		if(currentdb->BackendMinimumVersion(12, 0))
+		{
+			searchSQL += wxT(" or pg_catalog.pg_get_expr(ad.adbin, ad.adrelid) ilike ");
+		}
+		else
+		{
+			searchSQL += wxT(" or ad.adsrc ilike ");
+		}
+		searchSQL += txtPatternStr + wxT(") ")
 		             wxT("UNION ") // View's definition
 		             wxT("SELECT 'Views', c.relname, ")
 		             wxT("':Schemas/' || n.nspname || '/:Views/' || c.relname, n.nspname ")

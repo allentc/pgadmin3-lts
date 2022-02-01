@@ -1150,7 +1150,7 @@ void wxDivisionShape::MakeMandatoryControlPoints()
 	double maxX, maxY;
 
 	GetBoundingBoxMax(&maxX, &maxY);
-	double x = 0.0 , y = 0.0;
+	double x = 0.0, y = 0.0;
 	int direction = 0;
 	/*
 	  if (m_leftSide)
@@ -1626,37 +1626,37 @@ void wxDivisionShape::EditEdge(int WXUNUSED(side))
 	                          150));
 	form->Add(wxMakeFormString("Colour", pColour, wxFORM_CHOICE,
 	                           new wxList(wxMakeConstraintStrings(
-	                                   "BLACK"            ,
-	                                   "BLUE"             ,
-	                                   "BROWN"            ,
-	                                   "CORAL"            ,
-	                                   "CYAN"             ,
-	                                   "DARK GREY"        ,
-	                                   "DARK GREEN"       ,
-	                                   "DIM GREY"         ,
-	                                   "GREY"             ,
-	                                   "GREEN"            ,
-	                                   "LIGHT BLUE"       ,
-	                                   "LIGHT GREY"       ,
-	                                   "MAGENTA"          ,
-	                                   "MAROON"           ,
-	                                   "NAVY"             ,
-	                                   "ORANGE"           ,
-	                                   "PURPLE"           ,
-	                                   "RED"              ,
-	                                   "TURQUOISE"        ,
-	                                   "VIOLET"           ,
-	                                   "WHITE"            ,
-	                                   "YELLOW"           ,
+	                                   "BLACK",
+	                                   "BLUE",
+	                                   "BROWN",
+	                                   "CORAL",
+	                                   "CYAN",
+	                                   "DARK GREY",
+	                                   "DARK GREEN",
+	                                   "DIM GREY",
+	                                   "GREY",
+	                                   "GREEN",
+	                                   "LIGHT BLUE",
+	                                   "LIGHT GREY",
+	                                   "MAGENTA",
+	                                   "MAROON",
+	                                   "NAVY",
+	                                   "ORANGE",
+	                                   "PURPLE",
+	                                   "RED",
+	                                   "TURQUOISE",
+	                                   "VIOLET",
+	                                   "WHITE",
+	                                   "YELLOW",
 	                                   NULL),
 	                                      NULL), NULL, wxVERTICAL, 150));
 	form->Add(wxMakeFormString("Style", pStyle, wxFORM_CHOICE,
 	                           new wxList(wxMakeConstraintStrings(
-	                                   "Solid"            ,
-	                                   "Short Dash"       ,
-	                                   "Long Dash"        ,
-	                                   "Dot"              ,
-	                                   "Dot Dash"         ,
+	                                   "Solid",
+	                                   "Short Dash",
+	                                   "Long Dash",
+	                                   "Dot",
+	                                   "Dot Dash",
 	                                   NULL),
 	                                      NULL), NULL, wxVERTICAL, 100));
 

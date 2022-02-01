@@ -178,7 +178,7 @@ void dlgRepSetMerge::CheckChange()
 {
 	bool enable = true;
 
-	CheckValid(enable, cbTargetID->GetCount() > 0 , _("No set available to merge to."));
+	CheckValid(enable, cbTargetID->GetCount() > 0, _("No set available to merge to."));
 	CheckValid(enable, cbTargetID->GetCurrentSelection() >= 0, _("Please select replication set to merged to."));
 	EnableOK(enable);
 }
@@ -315,7 +315,7 @@ void dlgRepSetMove::CheckChange()
 {
 	bool enable = true;
 
-	CheckValid(enable, cbTargetNode->GetCount() > 0 , _("No node available to move this set to."));
+	CheckValid(enable, cbTargetNode->GetCount() > 0, _("No node available to move this set to."));
 	CheckValid(enable, cbTargetNode->GetCurrentSelection() >= 0, _("Please select node to move this replication set to."));
 	EnableOK(enable);
 }

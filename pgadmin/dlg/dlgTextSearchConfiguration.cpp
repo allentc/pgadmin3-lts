@@ -219,7 +219,7 @@ void dlgTextSearchConfiguration::CheckChange()
 		wxString name = GetName();
 		bool enable = true;
 		CheckValid(enable, !name.IsEmpty(), _("Please specify name."));
-		CheckValid(enable, cbParser->GetGuessedSelection() > 0 || cbCopy->GetGuessedSelection() > 0 , _("Please select a parser or a configuration to copy."));
+		CheckValid(enable, cbParser->GetGuessedSelection() > 0 || cbCopy->GetGuessedSelection() > 0, _("Please select a parser or a configuration to copy."));
 
 		EnableOK(enable);
 	}
