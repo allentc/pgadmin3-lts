@@ -49,7 +49,7 @@ If you are too lazy to read [INSTALL](./INSTALL) instructions, then try this for
 ```
 # apt-get install libwxgtk3.0-dev wx3.0-headers wxgtk3.0 wx3.0
 
-# apt-get install libjson-perl libpq-dev #postgresql-13 postgresql-contrib-13 postgresql-client-13
+# apt-get install libssh2-1 libssh2-1-dev libgcrypt20 libgcrypt20-dev libjson-perl libpq-dev #postgresql-13 postgresql-contrib-13 postgresql-client-13
 # systemctl restart postgresql || true
 
 $ bash bootstrap
