@@ -30,13 +30,14 @@
                     <Directory Id="VersionDir" Name="$(var.APPVERSION)">
 
                         <Component Id="core_libs" Guid="{3CF23B03-AE55-4FAB-B03B-7F8454F8802F}">
-                            <File Id="core_libs.libeay32.dll" Name="libeay32.dll" DiskId="1" Source="$(var.PGDIR)/bin/libeay32.dll" />
-                            <File Id="core_libs.libintl.dll" Name="libintl.dll" DiskId="1" Source="$(var.PGDIR)/bin/libintl.dll" />
+                            <File Id="core_libs.libcrypto_1_1.dll" Name="libcrypto-1_1.dll" DiskId="1" Source="$(var.PGDIR)/bin/libcrypto-1_1.dll" />
+                            <File Id="core_libs.libintl_8.dll" Name="libintl-8.dll" DiskId="1" Source="$(var.PGDIR)/bin/libintl-8.dll" />
                             <File Id="core_libs.libpq.dll" Name="libpq.dll" DiskId="1" Source="$(var.PGDIR)/bin/libpq.dll" />
                             <File Id="core_libs.libxml2.dll" Name="libxml2.dll" DiskId="1" Source="$(var.PGDIR)/bin/libxml2.dll" />
                             <File Id="core_libs.libxslt.dll" Name="libxslt.dll" DiskId="1" Source="$(var.PGDIR)/bin/libxslt.dll" />
-                            <File Id="core_libs.ssleay32.dll" Name="ssleay32.dll" DiskId="1" Source="$(var.PGDIR)/bin/ssleay32.dll" />
+                            <File Id="core_libs.libssl_1_1.dll" Name="libssl-1_1.dll" DiskId="1" Source="$(var.PGDIR)/bin/libssl-1_1.dll" />
                             <File Id="core_libs.libssh2.dll" Name="libssh2.dll" DiskId="1" Source="$(var.LIBSSH2DIR)/bin/libssh2.dll" />
+                            <File Id="core_libs.libiconv_2.dll" Name="libiconv-2.dll" DiskId="1" Source="$(var.PGDIR)/bin/libiconv-2.dll" />
                             <File Id="core_libs.wxbase30u_net_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxbase30u_net_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxbase30u_net_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />
                             <File Id="core_libs.wxbase30u_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxbase30u_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxbase30u_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />
                             <File Id="core_libs.wxbase30u_xml_vc$(var.PLATFORM_TOOLSET_VERSION).dll" Name="wxbase30u_xml_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DiskId="1" Source="$(var.WXDIR)/lib/vc$(var.PLATFORM_TOOLSET_VERSION)_dll/wxbase30u_xml_vc$(var.PLATFORM_TOOLSET_VERSION).dll" DefaultLanguage="0" />

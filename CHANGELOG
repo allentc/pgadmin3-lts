@@ -31,12 +31,15 @@ Key to developers
 - MH   Magnus Hagander
 - GL   Guillaume Lelarge
 - AV   Ashesh Vashi
+- SD   Sebastian Dietrich
 
 Changes
 -------
 
 Date       Dev Ver     Change details
 ---------- --- ------  --------------
+2022-02-13 SD  1.24.0  Use the server-default password hashing algorithm
+                       instead of always using MD5
 2016-06-13 DP  1.22.2  Include the Negator when reverse engineering SQL for
                        operators [Julien Rouhaud]
 2016-03-22 DP  1.22.2  Fix the psql plugin command on OSX to work more

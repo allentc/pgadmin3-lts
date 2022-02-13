@@ -75,7 +75,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: pwsh
       run: |
-        Invoke-WebRequest -Uri "https://get.enterprisedb.com/postgresql/postgresql-9.2.24-1-windows-binaries.zip?ls=Crossover&type=Crossover" -OutFile postgres-binaries.zip
+        Invoke-WebRequest -Uri "https://get.enterprisedb.com/postgresql/postgresql-10.19-1-windows-binaries.zip?ls=Crossover&type=Crossover" -OutFile postgres-binaries.zip
         7z.exe x postgres-binaries.zip -o${{env.PGDIR}}\..
 
     - name: Set up Visual Studio shell
