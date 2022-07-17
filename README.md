@@ -3,8 +3,8 @@
 Apparently, I have become the curator of this code by virtue of having
 preserved the last remaining fork of the BigSQL fork of pgadmin3-lts.
 Although a limited amount of maintenance work has occurred, there is no
-active project leadership or commitments to maintain pgadmin-lts compati-
-bility with future releases of PostgreSQL.  The master branch is functional
+active project leadership or commitments to maintain pgadmin-lts
+compatibility with future releases of PostgreSQL.  The master branch is functional
 with PostgreSQL 13.  YMMV.
 
 Also, this GitHub repo will not vanish.
