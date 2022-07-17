@@ -15,7 +15,7 @@ allentc
 
 **# pgAdmin3 LTS by BigSQL README #**
 
-pgAdmin3 has been superseded by pgAdmin4.  This repos exists to preserve
+pgAdmin3 has been superseded by pgAdmin4.  This repo exists to preserve
 the work as it was left by BigSQL and consolidate whatever maintenance
 effort occurs.  Binaries are not provided for any platform; you must build
 the application yourself.
