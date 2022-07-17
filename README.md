@@ -1,12 +1,17 @@
 ** Fork info **
 
-Apparently I have become the maintainer of this code by virtue of having
+Apparently, I have become the curator of this code by virtue of having
 preserved the last remaining fork of the BigSQL fork of pgadmin3-lts.
-Although there is no active development I have and will continue to review
-and accept pull requests.  Also, this GitHub repo will not vanish.
+Although a limited amount of maintenance work has occurred, there is no
+active project leadership or commitments to maintain pgadmin-lts compati-
+bility with future releases of PostgreSQL.  The master branch is functional
+with PostgreSQL 13.  YMMV.
+
+Also, this GitHub repo will not vanish.
 
 -- 
 allentc
+
 
 **# pgAdmin3 LTS by BigSQL README #**
 
