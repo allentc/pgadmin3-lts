@@ -10,20 +10,17 @@ allentc
 
 **# pgAdmin3 LTS by BigSQL README #**
 
-This is a fork of the pgAdmin3 project that aims to continue to support 
-PostgreSQL 8.4 thru 12.0 with Windows and OSX Binaries.  We are in basic
-maintenance mode and don't expect to be adding major new features.   We expect
-that over time users will mostly migrate to using pgAdmin4 Web as that
-matures and stabilizes.
+pgAdmin3 has been superseded by pgAdmin4.  This repos exists to preserve
+the work as it was left by BigSQL and consolidate whatever maintenance
+effort occurs.  Binaries are not provided for any platform; you must build
+the application yourself.
 
- 
 Introduction
 ------------
 
 pgAdmin3 is a popular and feature rich Open Source administration and
 development platform for PostgreSQL, the most advanced Open Source database in
-the world. Binaries for the application are presently produced on Windows & OSX
-to manage PostgreSQL 8.4 and above.
+the world.
 
 pgAdmin3 is designed to answer the needs of all users, from writing simple 
 SQL queries to developing complex databases. The graphical interface supports 
