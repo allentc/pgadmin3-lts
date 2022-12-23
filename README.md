@@ -55,7 +55,7 @@ If you are too lazy to read [INSTALL](./INSTALL) instructions, then try this for
 # systemctl restart postgresql || true
 
 $ bash bootstrap
-$ ./configure --prefix=/opt/pgadmin3bigsql --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC #--with-pgsql=/usr/lib/postgresql/13
+$ ./configure --prefix=/opt/pgadmin3bigsql --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC #--with-pgsql=/usr/lib/postgresql/13 --without-sphinx-build
 $ make -j8
 $ sudo make install
 ```
