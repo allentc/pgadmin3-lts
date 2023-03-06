@@ -5,7 +5,7 @@ preserved the last remaining fork of the BigSQL fork of pgadmin3-lts.
 Although a limited amount of maintenance work has occurred, there is no
 active project leadership or commitments to maintain pgadmin-lts
 compatibility with future releases of PostgreSQL.  The master branch is functional
-with PostgreSQL 13.  YMMV.
+with PostgreSQL 15.  YMMV.
 
 Also, this GitHub repo will not vanish.
 
@@ -40,22 +40,35 @@ pgAdmin3 is Free Software released under the PostgreSQL License.
 
 **# README by Datatrans #**
 
-Code has been changed to adapt PostgreSQL internal changes up to version 13.1:
+Code has been changed to adapt PostgreSQL internal changes up to version 15.2:
 - No more relhasoids in pg_class.
 - No more cache_value, is_cycled, is_called in sequence object (since PostgreSQL 11).
 - No more adsrc in pg_attrdef, it should be calculated as pg_catalog.pg_get_expr(adbin, adrelid) instead.
 - Declarative Table Partitioning DDL.
+- No more datlastsysoid in pg_database.
 
 If you are too lazy to read [INSTALL](./INSTALL) instructions, then try this for Debian/Ubuntu/Mint:
 ------------------------
 ```
 # apt-get install libwxgtk3.0-dev wx3.0-headers wxgtk3.0 wx3.0
 
-# apt-get install libssh2-1 libssh2-1-dev libgcrypt20 libgcrypt20-dev libjson-perl libpq-dev #postgresql-13 postgresql-contrib-13 postgresql-client-13
+# apt-get install libssh2-1 libssh2-1-dev libgcrypt20 libgcrypt20-dev libjson-perl libpq-dev #postgresql-15 postgresql-contrib-15 postgresql-client-15
 # systemctl restart postgresql || true
 
 $ bash bootstrap
-$ ./configure --prefix=/opt/pgadmin3bigsql --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC #--with-pgsql=/usr/lib/postgresql/13 --without-sphinx-build
+$ ./configure --prefix=/opt/pgadmin3bigsql --with-libgcrypt --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC #--with-pgsql=/usr/lib/postgresql/15 --without-sphinx-build
+$ make -j8
+$ sudo make install
+```
+
+for Centos/RedHat:
+------------------------
+```
+yum install wxGTK3 wxGTK3-devel
+yum install libssh2 libssh2-devel libxml2 libxml2-devel libxslt libxslt-devel openssl-devel #postgresql15 postgresql15-devel postgresql15-libs
+
+$ bash bootstrap
+$ ./configure --prefix=/opt/pgadmin3bigsql --with-wx-version=3.0  CFLAGS=-fPIC CXXFLAGS=-fPIC --with-pgsql=/usr/pgsql-15 --without-sphinx-build
 $ make -j8
 $ sudo make install
 ```
