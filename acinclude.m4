@@ -117,7 +117,7 @@ AC_DEFUN([LOCATE_WXWIDGETS],
 AC_DEFUN([CHECK_WXWIDGETS],
 [
 	AC_MSG_CHECKING(wxWidgets version)
-	TMP_WX_VERSION=`${WX_CONFIG} --version=${WX_VERSION} --version 2> /dev/null`
+	TMP_WX_VERSION=`${WX_CONFIG} --version 2> /dev/null`
 	if test "$TMP_WX_VERSION" = ""
 	then
 		 AC_MSG_RESULT(failed)
@@ -738,21 +738,21 @@ AC_DEFUN([SETUP_WXWIDGETS],
 	
 		if test "$BUILD_DEBUG" = yes
 		then
-			WX_NEW_CPPFLAGS=`${WX_CONFIG} --cppflags --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+			WX_NEW_CPPFLAGS=`${WX_CONFIG} --cppflags --unicode=yes --debug=yes 2> /dev/null`
 			CPPFLAGS="$CPPFLAGS $WX_NEW_CPPFLAGS"
 			CFLAGS=`echo $CFLAGS | sed -e "s/-O2/-O0/g"`
 			CXXFLAGS=`echo $CXXFLAGS | sed -e "s/-O2/-O0/g"`
 			
-			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
-			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
-			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=yes 2> /dev/null`
+			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes 2> /dev/null`
+			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes 2> /dev/null`
 		else
-			WX_NEW_CPPFLAGS=`${WX_CONFIG} --cppflags --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+			WX_NEW_CPPFLAGS=`${WX_CONFIG} --cppflags --unicode=yes --debug=no 2> /dev/null`
 			CPPFLAGS="$CPPFLAGS $WX_NEW_CPPFLAGS -DEMBED_XRC"
 		
-			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
-			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
-			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=no 2> /dev/null`
+			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no 2> /dev/null`
+			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no 2> /dev/null`
 		fi
 
 		AC_MSG_CHECKING(wxWidgets in ${WX_HOME})
@@ -883,7 +883,7 @@ AC_DEFUN([SUMMARY],
 	echo
 	echo "wxWidgets directory:			$WX_HOME"
 	echo "wxWidgets wx-config binary:		$WX_CONFIG"
-	echo "wxWidgets version:			wxWidgets "`$WX_CONFIG --version --version=$WX_VERSION`
+	echo "wxWidgets version:			wxWidgets "`$WX_CONFIG --version`
 	echo
 	echo "libxml2 directory:			$XML2_HOME"
 	echo "libxml2 xml2-config binary:		$XML2_CONFIG"
