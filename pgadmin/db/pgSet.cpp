@@ -110,8 +110,6 @@ pgTypClass pgSet::ColTypClass(const int col) const
 	switch (StrToLong(typoid))
 	{
 		case PGOID_TYPE_BOOL:
-			colClasses[col] = PGTYPCLASS_BOOL;
-			break;
 		case PGOID_TYPE_INT8:
 		case PGOID_TYPE_INT2:
 		case PGOID_TYPE_INT4:
@@ -124,24 +122,18 @@ pgTypClass pgSet::ColTypClass(const int col) const
 		case PGOID_TYPE_MONEY:
 		case PGOID_TYPE_BIT:
 		case PGOID_TYPE_NUMERIC:
-			colClasses[col] = PGTYPCLASS_NUMERIC;
-			break;
 		case PGOID_TYPE_BYTEA:
 		case PGOID_TYPE_CHAR:
 		case PGOID_TYPE_NAME:
 		case PGOID_TYPE_TEXT:
 		case PGOID_TYPE_VARCHAR:
-			colClasses[col] = PGTYPCLASS_STRING;
-			break;
 		case PGOID_TYPE_TIMESTAMP:
 		case PGOID_TYPE_TIMESTAMPTZ:
 		case PGOID_TYPE_TIME:
 		case PGOID_TYPE_TIMETZ:
 		case PGOID_TYPE_INTERVAL:
-			colClasses[col] = PGTYPCLASS_DATE;
-			break;
+
 		default:
-			colClasses[col] = PGTYPCLASS_OTHER;
 			break;
 	}
 

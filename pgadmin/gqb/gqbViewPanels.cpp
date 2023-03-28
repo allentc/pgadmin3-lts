@@ -532,7 +532,6 @@ void gqbColsPopUp::refreshTree(gqbModel *_model)
 void  gqbColsPopUp::OnPopUpOKClick(wxCommandEvent &event)
 {
 	this->usedGrid->SetCellValue(_row, _col, this->getEditText());
-	this->MakeModal(false);
 	this->Hide();
 	this->GetParent()->Refresh();
 }
@@ -551,7 +550,6 @@ void  gqbColsPopUp::OnPopUpTreeDoubleClick(wxTreeEvent &event)
 			{
 				this->usedGrid->SetCellValue(_row, _col, _("Set value"));
 			}
-			this->MakeModal(false);
 			this->Hide();
 			this->GetParent()->Refresh();
 		}
@@ -670,7 +668,6 @@ void gqbCriteriaPanel::showColsPopUp(int row, int col, wxPoint pos)
 	p.y += p2.y + 40;
 	colsPopUp->SetPosition(p);
 	colsPopUp->Show();
-	colsPopUp->MakeModal(true);
 	colsPopUp->focus();
 	colsPopUp->setUsedCell(restrictionsGrid, row, col);
 }
@@ -1017,7 +1014,7 @@ gqbOrderPanel::gqbOrderPanel(wxWindow *parent, gqbGridOrderTable *gridTableLeft,
 
 void gqbOrderPanel::OnButtonRemove(wxCommandEvent &)
 {
-	if(usedColumns->GetRows() > 0)
+	if(usedColumns->GetNumberRows() > 0)
 	{
 		if(selRightTop != -1)
 		{
@@ -1032,9 +1029,9 @@ void gqbOrderPanel::OnButtonRemove(wxCommandEvent &)
 
 void gqbOrderPanel::OnButtonRemoveAll(wxCommandEvent &)
 {
-	if(usedColumns->GetRows() > 0)
+	if(usedColumns->GetNumberRows() > 0)
 	{
-		for(int i = usedColumns->GetRows() - 1; i >= 0; i--)
+		for(int i = usedColumns->GetNumberRows() - 1; i >= 0; i--)
 		{
 			gqbColumn *col = (gqbColumn *) tableRight->getObjectAt(i, 0);
 			gqbQueryObject *colParent = (gqbQueryObject *) tableRight->getObjectAt(i, 1);
@@ -1047,14 +1044,14 @@ void gqbOrderPanel::OnButtonRemoveAll(wxCommandEvent &)
 
 void gqbOrderPanel::OnButtonAdd(wxCommandEvent &)
 {
-	if(availableColumns->GetRows() > 0)
+	if(availableColumns->GetNumberRows() > 0)
 	{
 		if(selLeft != -1)
 		{
 			gqbColumn *col = (gqbColumn *) tableLeft->getObjectAt(selLeft, 0);
 			gqbQueryObject *colParent = (gqbQueryObject *) tableLeft->getObjectAt(selLeft, 1);
 			tableRight->AppendItem(col, colParent, 'A');
-			usedColumns->SetCellRenderer((usedColumns->GetRows() - 1), 1, new wxGridCellButtonRenderer);
+			usedColumns->SetCellRenderer((usedColumns->GetNumberRows() - 1), 1, new wxGridCellButtonRenderer);
 			tableLeft->removeRowAt(selLeft);
 		}
 	}
@@ -1063,14 +1060,14 @@ void gqbOrderPanel::OnButtonAdd(wxCommandEvent &)
 
 void gqbOrderPanel::OnButtonAddAll(wxCommandEvent &)
 {
-	if(availableColumns->GetRows() > 0)
+	if(availableColumns->GetNumberRows() > 0)
 	{
-		for(int i = availableColumns->GetRows() - 1; i >= 0; i--)
+		for(int i = availableColumns->GetNumberRows() - 1; i >= 0; i--)
 		{
 			gqbColumn *col = (gqbColumn *) tableLeft->getObjectAt(i, 0);
 			gqbQueryObject *colParent = (gqbQueryObject *) tableLeft->getObjectAt(i, 1);
 			tableRight->AppendItem(col, colParent, 'A');
-			usedColumns->SetCellRenderer((usedColumns->GetRows() - 1), 1, new wxGridCellButtonRenderer);
+			usedColumns->SetCellRenderer((usedColumns->GetNumberRows() - 1), 1, new wxGridCellButtonRenderer);
 			tableLeft->removeRowAt(i);
 		}
 	}
@@ -1085,7 +1082,7 @@ void gqbOrderPanel::OnGridSelectCell( wxGridEvent &ev )
 		{
 			wxObject *object = ev.GetEventObject();
 			wxGrid *grid = wxDynamicCast( object, wxGrid );
-			if(grid->GetCols() == 1)              // Left Grid
+			if(grid->GetNumberCols() == 1)              // Left Grid
 			{
 				selLeft = ev.GetRow();
 			}
@@ -1402,7 +1399,6 @@ void gqbJoinsPopUp::OnPopUpOKClick(wxCommandEvent &event)
 		updateJoin();
 	}
 
-	this->MakeModal(false);
 	this->Hide();
 	this->GetParent()->Refresh();
 	this->join = NULL;
@@ -1471,7 +1467,6 @@ void  gqbJoinsPopUp::OnPopUpTreeDoubleClick(wxTreeEvent &event)
 
 			updateJoin();
 
-			this->MakeModal(false);
 			this->Hide();
 			this->GetParent()->Refresh();
 			this->join = NULL;
@@ -1569,7 +1564,6 @@ void gqbJoinsPanel::showColsPopUp(int row, int col, wxPoint pos)
 	p.y += p2.y + 40;
 	joinsPopUp->SetPosition(p);
 	joinsPopUp->Show();
-	joinsPopUp->MakeModal(true);
 	joinsPopUp->focus();
 	joinsPopUp->setUsedCell(joinsGrid, row, col);
 }
