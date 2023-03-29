@@ -700,7 +700,7 @@ wxFont sysSettings::GetSQLFont()
 		return wxFont(9, wxTELETYPE, wxNORMAL, wxNORMAL);
 #else
 #ifdef __WXGTK__
-		return wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL);
+		return wxFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 #else
 		return wxFont(12, wxTELETYPE, wxNORMAL, wxNORMAL);
 #endif

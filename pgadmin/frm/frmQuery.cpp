@@ -2349,7 +2349,7 @@ void frmQuery::OnExecScript(wxCommandEvent &event)
 
 	// Clear markers and indicators
 	sqlQuery->MarkerDeleteAll(0);
-	sqlQuery->StartStyling(0, wxSTC_INDICS_MASK);
+	sqlQuery->StartStyling(0);
 	sqlQuery->SetStyling(sqlQuery->GetText().Length(), 0);
 
 	// Menu stuff to initialize
@@ -2504,7 +2504,7 @@ void frmQuery::execQuery(const wxString &query, int resultToRetrieve, bool singl
 
 	// Clear markers and indicators
 	sqlQuery->MarkerDeleteAll(0);
-	sqlQuery->StartStyling(0, wxSTC_INDICS_MASK);
+	sqlQuery->StartStyling(0);
 	sqlQuery->SetStyling(sqlQuery->GetText().Length(), 0);
 
 	if (!sqlQuery->IsChanged())
@@ -2880,7 +2880,7 @@ void frmQuery::OnQueryComplete(pgQueryResultEvent &ev)
 
 				// Set an indicator on the error word (break on any kind of bracket, a space or full stop)
 				int sPos = errPos + selStart - 1, wEnd = 1;
-				sqlQueryExec->StartStyling(sPos, wxSTC_INDICS_MASK);
+				sqlQueryExec->StartStyling(0);
 				int c = sqlQueryExec->GetCharAt(sPos + wEnd);
 				size_t len = sqlQueryExec->GetText().Length();
 				while(c != ' ' && c != '(' && c != '{' && c != '[' && c != '.' &&
