@@ -753,6 +753,25 @@ wxString pgTable::GetSql(ctlTree *browser)
 
 		sql += wxT(";\n")
 		       + GetOwnerSql(7, 3);
+		if (GetConnection()->BackendMinimumVersion(14, 0))
+		{
+			pgSet* set = ExecuteSet(
+				wxT("SELECT sn.nspname||'.'|| s.stxname AS statistics_name,\n")
+				wxT("  unnest(pg_get_statisticsobjdef_expressions(s.oid)) AS stat_expr\n")
+				wxT("FROM pg_statistic_ext s\n")
+				wxT("LEFT JOIN pg_namespace sn ON ((sn.oid = s.stxnamespace))\n")
+				wxT("WHERE stxrelid=") + GetOidStr()
+			);
+			if (set)
+			{
+				while (!set->Eof())
+				{
+					sql += wxT("CREATE STATISTICS ") + set->GetVal(0) + " ON " + set->GetVal(1) + " FROM " + GetQuotedFullIdentifier() + wxT("\n");
+					set->MoveNext();
+				}
+				delete set;
+			}
+		}
 
 		if (GetConnection()->BackendMinimumVersion(8, 4))
 			sql += GetGrant(wxT("arwdDxt"));
