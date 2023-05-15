@@ -287,12 +287,12 @@ wxString pgFunction::GetSql(ctlTree *browser)
 		wxString qtSig = GetQuotedFullIdentifier()  + wxT("(") + GetArgSigList() + wxT(")");
 
 		sql = wxT("-- Function: ") + qtSig + wxT("\n\n")
-		      + wxT("-- DROP FUNCTION ") + qtSig + wxT(";")
-		      + wxT("\n\nCREATE OR REPLACE FUNCTION ") + qtName;
+			+ wxT("-- DROP FUNCTION ") + qtSig + wxT(";\n\n");
 
 		// Use Oracle style syntax for edb-spl functions
 		if (GetLanguage() == wxT("edbspl") && GetProcType() == 2)
 		{
+			sql += wxT("CREATE OR REPLACE FUNCTION ") + qtName;
 			sql += wxT("\nRETURN ");
 			sql += GetReturnType();
 
@@ -304,34 +304,48 @@ wxString pgFunction::GetSql(ctlTree *browser)
 		}
 		else
 		{
-			sql += wxT("\n  RETURNS ");
-			sql += GetReturnType();
-
-			sql += wxT(" AS\n");
-
-			if (GetLanguage().IsSameAs(wxT("C"), false))
+			if (GetLanguage() == wxT("sql"))
 			{
-				sql += qtDbString(GetBin()) + wxT(", ") + qtDbString(GetSource());
+				pgSet* set = ExecuteSet(
+					wxT("SELECT pg_get_functiondef(") + this->GetOidStr() + wxT(")")
+				);
+				if (set)
+				{
+					sql += set->GetVal(0);
+					delete set;
+				}
 			}
 			else
 			{
-				if (GetConnection()->BackendMinimumVersion(7, 5))
-					sql += qtDbStringDollar(GetSource());
+				sql += wxT("CREATE OR REPLACE FUNCTION ") + qtName;
+				sql += wxT("\n  RETURNS ");
+				sql += GetReturnType();
+
+				sql += wxT(" AS\n");
+
+				if (GetLanguage().IsSameAs(wxT("C"), false))
+				{
+					sql += qtDbString(GetBin()) + wxT(", ") + qtDbString(GetSource());
+				}
 				else
-					sql += qtDbString(GetSource());
+				{
+					if (GetConnection()->BackendMinimumVersion(7, 5))
+						sql += qtDbStringDollar(GetSource());
+					else
+						sql += qtDbString(GetSource());
+				}
+				sql += wxT("\n  LANGUAGE ") + GetLanguage() + wxT(" ");
+				if (GetConnection()->BackendMinimumVersion(8, 4) && GetIsWindow())
+					sql += wxT("WINDOW ");
+				sql += GetVolatility();
+
+				if (GetConnection()->BackendMinimumVersion(9, 2) && GetIsLeakProof())
+					sql += wxT(" LEAKPROOF");
+				if (GetIsStrict())
+					sql += wxT(" STRICT");
+				if (GetSecureDefiner())
+					sql += wxT(" SECURITY DEFINER");
 			}
-			sql += wxT("\n  LANGUAGE ") + GetLanguage() + wxT(" ");
-			if (GetConnection()->BackendMinimumVersion(8, 4) && GetIsWindow())
-				sql += wxT("WINDOW ");
-			sql += GetVolatility();
-
-			if (GetConnection()->BackendMinimumVersion(9, 2) && GetIsLeakProof())
-				sql += wxT(" LEAKPROOF");
-			if (GetIsStrict())
-				sql += wxT(" STRICT");
-			if (GetSecureDefiner())
-				sql += wxT(" SECURITY DEFINER");
-
 			// PostgreSQL 8.3+ cost/row estimations
 			if (GetConnection()->BackendMinimumVersion(8, 3))
 			{
