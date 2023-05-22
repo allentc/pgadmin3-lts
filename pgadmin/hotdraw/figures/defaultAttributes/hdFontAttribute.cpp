@@ -46,5 +46,5 @@ wxFont &hdFontAttribute::font()
 
 void hdFontAttribute::InitFont()
 {
-	defaultFont = new wxFont(10, wxSWISS, wxNORMAL, wxNORMAL);
+	defaultFont = new wxFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 }

@@ -128,9 +128,9 @@ void hdDrawingView::onPaint(wxPaintEvent &event)
 	//Hack to avoid selection rectangle drawing bug
 	if (drawSelRect)
 	{
-		wxPen *pen = wxThePenList->FindOrCreatePen(*wxRED, 1, wxDOT);
+		wxPen *pen = wxThePenList->FindOrCreatePen(*wxRED, 1, wxPENSTYLE_DOT);
 		dc.SetPen(*pen);
-		wxBrush *brush = wxTheBrushList->FindOrCreateBrush(*wxRED, wxTRANSPARENT);
+		wxBrush *brush = wxTheBrushList->FindOrCreateBrush(*wxRED, wxBRUSHSTYLE_TRANSPARENT);
 		dc.SetBackground(*brush);
 		dc.SetBackgroundMode(wxTRANSPARENT);
 		//Adjust points before drawing

@@ -72,7 +72,7 @@ void ddTableFigure::Init(wxString tableName, int x, int y)
 	fontColorAttribute->fontColor = wxColour(49, 79, 79);
 	//Set Value default selected Attributes
 	lineSelAttribute->pen().SetColour(wxColour(204, 0, 0));
-	lineSelAttribute->pen().SetStyle(wxSOLID);
+	lineSelAttribute->pen().SetStyle(wxPENSTYLE_SOLID);
 	lineSelAttribute->pen().SetWidth(1);
 	fillSelAttribute->brush().SetColour(wxColour(255, 250, 205));
 	fillAttribute->brush().SetColour(wxColour(248, 248, 255));
