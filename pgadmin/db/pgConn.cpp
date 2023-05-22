@@ -265,7 +265,7 @@ bool pgConn::Initialize()
 		if (BackendMinimumVersion(9, 0))
 			sql += wxT("SET bytea_output=escape;\n");
 
-		sql += wxT("SELECT oid, pg_encoding_to_char(encoding) AS encoding, datlastsysoid\n")
+		sql += wxT("SELECT oid, pg_encoding_to_char(encoding) AS encoding, (SELECT oid FROM pg_database WHERE datname = 'template0') AS datlastsysoid\n")
 		       wxT("  FROM pg_database WHERE ");
 
 		if (save_oid)
