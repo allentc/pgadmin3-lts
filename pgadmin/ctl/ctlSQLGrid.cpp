@@ -44,7 +44,7 @@ ctlSQLGrid::ctlSQLGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, cons
 	SetDefaultCellFont(fntCells);
 	// Set labels font
 	wxFont fntLabel(settings->GetSystemFont());
-	fntLabel.SetWeight(wxBOLD);
+	fntLabel.SetWeight(wxFONTWEIGHT_BOLD);
 	SetLabelFont(fntLabel);
 	SetColLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 	SetRowLabelSize(50);
@@ -327,7 +327,7 @@ void ctlSQLGrid::OnLabelDoubleClick(wxGridEvent &event)
 				SaveEditControlValue();
 			}
 
-			SetRowHeight(row, extentWant);
+			SetRowSize(row, extentWant);
 			EndBatch();
 		}
 	}
@@ -367,7 +367,7 @@ void ctlSQLGrid::OnLabelDoubleClick(wxGridEvent &event)
 			extentWant += EXTRAEXTENT_WIDTH;
 			extentWant = wxMax(extentWant, GetColMinimalAcceptableWidth());
 			extentWant = wxMin(extentWant, maxWidth * 3 / 4);
-			int currentWidth = GetColumnWidth(col);
+			int currentWidth = GetColSize(col);
 
 			if (currentWidth >= maxWidth * 3 / 4 || currentWidth == extentWant)
 				extentWant = GetColMinimalAcceptableWidth();
@@ -386,7 +386,7 @@ void ctlSQLGrid::OnLabelDoubleClick(wxGridEvent &event)
 					HideCellEditControl();
 					SaveEditControlValue();
 				}
-				SetColumnWidth(col, extentWant);
+				SetRowSize(col, extentWant);
 				EndBatch();
 				colSizes[GetColKeyValue(col)] = extentWant;
 			}
